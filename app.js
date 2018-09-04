@@ -212,7 +212,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 let buttons = [
                     {
                         type:"web_url",
-                        url:"https://www.myapple.com/track_order",
+                        url:"https://www.google.com",
                         title:"Track my order"
                     },
                     {
@@ -770,7 +770,11 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
-        case "CHAT":
+        case "JOB_APPLY":
+            //get feedback with new jobs
+            sendToDialogFlow(senderID, 'job openings');
+            break;
+		case "CHAT":
             //user wants to chat
             sendTextMessage(senderID, "I love chatting too. Do you have any other questions for me?");
             break;
