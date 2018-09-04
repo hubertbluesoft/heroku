@@ -218,7 +218,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     {
                         type:"phone_number",
                         title:"Call us",
-                        payload:"+48510213237",
+                        payload:"+48510213237"
                     },
                     {
                         type:"postback",
@@ -770,7 +770,7 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
-        case 'CHAT':
+        case "CHAT":
             //user wants to chat
             sendTextMessage(senderID, "I love chatting too. Do you have any other questions for me?");
             break;
