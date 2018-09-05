@@ -797,29 +797,7 @@ function receivedPostback(event) {
 	switch (payload) {
         case "GET_STARTED":
             //user wants to chat
-            handleMessages(messages, sender);
-            sendTypingOn(sender);
-            //ask what user wants to do next
-            setTimeout(function() {
-                let buttons = [
-                    {
-                        type:"web_url",
-                        url:"https://www.google.com",
-                        title:"TAAAAAAAAAK"
-                    },
-                    {
-                        type:"phone_number",
-                        title:"Call us",
-                        payload:"+48510213237"
-                    },
-                    {
-                        type:"postback",
-                        title:"Keep on Chatting",
-                        payload:"CHAT"
-                    }
-                ];
-                sendButtonMessage(sender, "What would you like to do next?", buttons);
-            }, 3000)
+            sendTextMessage(senderID, "TAK");
             break;
         case "JOB_APPLY":
             //get feedback with new jobs
