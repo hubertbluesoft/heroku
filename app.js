@@ -229,7 +229,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendButtonMessage(sender, "What would you like to do next?", buttons);
             }, 3000)
             break;
-        case "Welcome":
+        case "input.welcome":
             handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
