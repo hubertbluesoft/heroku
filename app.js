@@ -795,6 +795,10 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
+        case "GET_STARTED":
+            //user wants to chat
+            sendTextMessage(senderID, "This is MENU postback");
+            break;
         case "JOB_APPLY":
             //get feedback with new jobs
             sendToDialogFlow(senderID, 'job openings');
