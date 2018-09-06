@@ -237,8 +237,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 let buttons = [
                     {
                         type:"web_url",
-                        url:"https://www.google.com",
-                        title:"TAAAAAAAAAK"
+                        url:"https://bluesoft.net.pl/en/",
+                        title:"About us"
                     },
                     {
                         type:"phone_number",
@@ -247,7 +247,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     },
                     {
                         type:"postback",
-                        title:"Keep on Chatting",
+                        title:"Find job",
                         payload:"CHAT"
                     }
                 ];
