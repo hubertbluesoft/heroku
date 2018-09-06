@@ -787,8 +787,23 @@ function receivedPostback(event) {
 	switch (payload) {
         case "GET_STARTED":
             //user wants to chat
-            sendTextMessage(senderID, "TAK");
-            break;
+            //sendTextMessage(senderID, "TAK");
+            setTimeout(function() {
+                let buttons = [
+                    {
+                        type:"web_url",
+                        url:"https://bluesoft.net.pl/en/",
+                        title:"About us"
+                    },
+                    {
+                        type:"postback",
+                        title:"Find job",
+                        payload:"find_job"
+                    }
+                ];
+                sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);
+            }, 3000)
+			break;
         case "JOB_APPLY":
             //get feedback with new jobs
             sendToDialogFlow(senderID, 'job openings');
