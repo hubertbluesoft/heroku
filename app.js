@@ -785,7 +785,11 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
-        case "GET_STARTED":
+        case "input.welcome":
+            //user wants to chat
+            sendTextMessage(senderID, "NIE");
+            break;
+		case "GET_STARTED":
             //user wants to chat
             sendTextMessage(senderID, "TAK");
 			break;
