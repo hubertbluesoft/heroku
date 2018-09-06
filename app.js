@@ -225,7 +225,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             }, 3000)
             break;
         case "input.welcome":
-            /*handleMessages(messages, sender);
+            handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
             setTimeout(function() {
@@ -242,40 +242,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     }
                 ];
                 sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);
-            }, 3000)*/
-            if (isDefined(contexts[0]) &&
-                (contexts[0].name.includes('job_application') || contexts[0].name.includes('job-application-details_dialog_context'))
-                && contexts[0].parameters) {
-                let phone_number = (isDefined(contexts[0].parameters.fields['phone-number'])
-                    && contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
-                let user_name = (isDefined(contexts[0].parameters.fields['user-name'])
-                    && contexts[0].parameters.fields['user-name'] != '') ? contexts[0].parameters.fields['user-name'].stringValue : '';
-                let previous_job = (isDefined(contexts[0].parameters.fields['previous-job'])
-                    && contexts[0].parameters.fields['previous-job'] != '') ? contexts[0].parameters.fields['previous-job'].stringValue : '';
-                let years_of_experience = (isDefined(contexts[0].parameters.fields['years-of-experience'])
-                    && contexts[0].parameters.fields['years-of-experience'] != '') ? contexts[0].parameters.fields['years-of-experience'].stringValue : '';
-                let job_vacancy = (isDefined(contexts[0].parameters.fields['job-vacancy'])
-                    && contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
-                if (phone_number == '' && user_name != '' && previous_job != '' && years_of_experience == '') {
-                    let replies = [
-                        {
-                            "content_type":"text",
-                            "title":"Less than 1 year",
-                            "payload":"Less than 1 year"
-                        },
-                        {
-                            "content_type":"text",
-                            "title":"Less than 10 years",
-                            "payload":"Less than 10 years"
-                        },
-                        {
-                            "content_type":"text",
-                            "title":"More than 10 years",
-                            "payload":"More than 10 years"
-                        }
-                    ];
-                    sendQuickReply(sender, messages[0].text.text[0], replies);
-                } else if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
+            }, 3000)
             break;
 		default:
 			//unhandled action, just send back the text
