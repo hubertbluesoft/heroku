@@ -785,13 +785,9 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
-        case "input.welcome":
+       case "GET_STARTED":
             //user wants to chat
-            sendTextMessage(senderID, "NIE");
-            break;
-		case "GET_STARTED":
-            //user wants to chat
-            sendTextMessage(senderID, "TAK");
+            sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you");
 			break;
         case "JOB_APPLY":
             //get feedback with new jobs
