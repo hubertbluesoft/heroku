@@ -238,7 +238,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     {
                         type:"postback",
                         title:"Find job",
-                        payload:"CHAT"
+                        payload:"find_job"
                     }
                 ];
                 sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);
@@ -793,9 +793,9 @@ function receivedPostback(event) {
             //get feedback with new jobs
             sendToDialogFlow(senderID, 'job openings');
             break;
-		case "CHAT":
+		case "find_job":
             //user wants to chat
-            sendTextMessage(senderID, "I love chatting too. Do you have any other questions for me?");
+            sendTextMessage(senderID, "You've come it the right time. Please click or type text which job do you prefer.");
             break;
 		default:
 			//unindentified payload
