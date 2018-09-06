@@ -795,7 +795,17 @@ function receivedPostback(event) {
             break;
 		case "find_job":
             //user wants to chat
-            sendTextMessage(senderID, "You've come it the right time. Please click or type text which job do you prefer.");
+            setTimeout(function() {
+                let buttons = [
+            {
+            	"content_type":"text",
+            	"title":"text",
+            	"image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
+            	"payload":"OK"
+        	}
+            ];
+                sendTextMessage(senderID, "You've come it the right time. Please click or type text which job do you prefer.");
+            }, 3000)
             break;
 		default:
 			//unindentified payload
