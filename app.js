@@ -216,11 +216,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                         title:"Track my order"
                     },
                     {
-                        type:"phone_number",
-                        title:"Call us",
-                        payload:"+48510213237"
-                    },
-                    {
                         type:"postback",
                         title:"Keep on Chatting",
                         payload:"CHAT"
@@ -241,17 +236,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                         title:"About us"
                     },
                     {
-                        type:"phone_number",
-                        title:"Call us",
-                        payload:"+48510213237"
-                    },
-                    {
                         type:"postback",
                         title:"Find job",
                         payload:"CHAT"
                     }
                 ];
-                sendButtonMessage(sender, "What would you like to do next?", buttons);
+                sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);
             }, 3000)
             break;
 		default:
