@@ -267,7 +267,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                         "payload":"More than 10 years"
                     }
                 ];
-                sendQuickReply(sender, messages[0].text.text[0], replies);
+                sendQuickReply(sender, messages, replies);
             }, 3000)
             break;
 		default:
