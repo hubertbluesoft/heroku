@@ -792,7 +792,7 @@ function receivedPostback(event) {
 			break;
         case "JOB_APPLY":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, 'job openings');
+            sendToDialogFlow(senderID, 'job-enquiry');
             break;
 		case "find_job":
             //user wants to chat
