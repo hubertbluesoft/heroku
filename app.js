@@ -6,6 +6,7 @@ const express = require('express');
 const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const request = require('request');
+const pg = require('pg')
 const app = express();
 const uuid = require('uuid');
 
@@ -225,10 +226,10 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             }, 3000)
             break;
         case "input.welcome":
-            handleMessages(messages, sender);
+        	handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
-            setTimeout(function() {
+			setTimeout(function() {
                 let buttons = [
                     {
                         type:"web_url",
