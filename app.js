@@ -7,6 +7,7 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const request = require('request');
 const pg = require('pg')
+pg.defaults.ssl = true;
 const app = express();
 const uuid = require('uuid');
 
@@ -36,7 +37,9 @@ if (!config.FB_APP_SECRET) {
 if (!config.SERVER_URL) { //used for ink to static files
 	throw new Error('missing SERVER_URL');
 }
-
+if (!config.PG_CONFIG) { //pg config
+    throw new Error('missing PG_CONFIG');
+}
 
 
 app.set('port', (process.env.PORT || 5000))
@@ -225,7 +228,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendButtonMessage(sender, "What would you like to do next?", buttons);
             }, 3000)
             break;
-        case "input.welcome":
+        case "input-welcome":
         	handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
@@ -743,6 +746,36 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
+                var pool = new pg.Pool(config.PG_CONFIG);
+                pool.connect(function(err, client, done) {
+                    if (err) {
+                        return console.error('Error acquiring client', err.stack);
+                    }
+                    var rows = [];
+                    client.query(`SELECT fb_id FROM users WHERE fb_id='${userId}' LIMIT 1`,
+                        function(err, result) {
+                            if (err) {
+                                console.log('Query error: ' + err);
+                            } else {
+                                if (result.rows.length === 0) {
+                                    let sql = 'INSERT INTO users (fb_id, first_name, last_name, profile_pic, ' +
+                                        'locale, timezone, gender) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+                                    client.query(sql,
+                                        [
+                                            userId,
+                                            user.first_name,
+                                            user.last_name,
+                                            user.profile_pic,
+                                            user.locale,
+                                            user.timezone,
+                                            user.gender
+                                        ]);
+                                }
+                            }
+                        });
+                });
+                pool.end();
+
 				sendTextMessage(userId, "Welcome " + user.first_name + '!');
 			} else {
 				console.log("Cannot get data for fb user with id",
@@ -816,15 +849,15 @@ function receivedPostback(event) {
             break;
         case "RPA_DEVELOPER":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, "I want to work in your company");
+            sendToDialogFlow(senderID, "RPA Developer");
             break;
         case "MANAGER":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, "I want to work in your company");
+            sendToDialogFlow(senderID, "Manager");
             break;
         case "NOT_INTERESTED":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, "I want to work in your company");
+            sendToDialogFlow(senderID, "Not interested");
             break;
 		default:
 			//unindentified payload
