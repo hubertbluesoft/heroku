@@ -245,6 +245,31 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);
             }, 3000)
             break;
+        case "job-enquiry":
+            handleMessages(messages, sender);
+            sendTypingOn(sender);
+            //ask what user wants to do next
+            setTimeout(function() {
+                let replies = [
+                    {
+                        "content_type":"text",
+                        "title":"Less than 1 year",
+                        "payload":"Less than 1 year"
+                    },
+                    {
+                        "content_type":"text",
+                        "title":"Less than 10 years",
+                        "payload":"Less than 10 years"
+                    },
+                    {
+                        "content_type":"text",
+                        "title":"More than 10 years",
+                        "payload":"More than 10 years"
+                    }
+                ];
+                sendQuickReply(sender, messages[0].text.text[0], replies);
+            }, 3000)
+            break;
 		default:
 			//unhandled action, just send back the text
             handleMessages(messages, sender);
@@ -793,27 +818,6 @@ function receivedPostback(event) {
         case "FIND_JOB":
             //get feedback with new jobs
 			sendToDialogFlow(senderID, "I want to work in your company");
-            setTimeout(function() {
-                let replies = [
-                    {
-                        "content_type": "text",
-                        "title": "Less than 1 year",
-                        "payload": "Less than 1 year"
-                    },
-                    {
-                        "content_type": "text",
-                        "title": "Less than 10 years",
-                        "payload": "Less than 10 years"
-                    },
-                    {
-                        "content_type": "text",
-                        "title": "More than 10 years",
-                        "payload": "More than 10 years"
-                    }
-                ];
-                sendQuickReply(senderID, replies);
-            },3000)
-
             break;
 		default:
 			//unindentified payload
