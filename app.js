@@ -249,18 +249,18 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 let replies = [
                     {
                         "content_type":"text",
-                        "title":"Less than 1 year",
-                        "payload":"Less than 1 year"
+                        "title":"RPA developer",
+                        "payload":"RPA_DEVELOPER"
                     },
                     {
                         "content_type":"text",
-                        "title":"Less than 10 years",
-                        "payload":"Less than 10 years"
+                        "title":"Manager",
+                        "payload":"MANAGER"
                     },
                     {
                         "content_type":"text",
-                        "title":"More than 10 years",
-                        "payload":"More than 10 years"
+                        "title":"Not interested",
+                        "payload":"NOT_INTERESTED"
                     }
                 ];
                 sendQuickReply(sender, messages[0].text.text[0], replies);
