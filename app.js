@@ -794,6 +794,10 @@ function receivedPostback(event) {
             //get feedback with new jobs
             sendToDialogFlow(senderID, 'job-enquiry');
             break;
+        case "FUN_NEWS":
+            //get feedback with new jobs
+            sendToDialogFlow(senderID, 'detailed-application');
+            break;
 		case "find_job":
             //user wants to chat
 			sendTextMessage(senderID, "You've come it the right time. Please click or type text which job do you prefer.");
