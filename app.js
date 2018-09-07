@@ -239,7 +239,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     {
                         type:"postback",
                         title:"Find job",
-                        payload:"find_job"
+                        payload:"FIND_JOB"
                     }
                 ];
                 sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);
