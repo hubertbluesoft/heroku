@@ -786,21 +786,17 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
-       case "GET_STARTED":
+       case "START_HERE":
             //user wants to chat
             sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you");
 			break;
-        case "JOB_APPLY":
-            //get feedback with new jobs
-            sendToDialogFlow(senderID, 'job-enquiry');
-            break;
-        case "FUN_NEWS":
+        case "ABOUT_US":
             //get feedback with new jobs
             sendToDialogFlow(senderID, 'Not interested')
             break;
-		case "find_job":
-            //user wants to chat
-			sendTextMessage(senderID, "You've come it the right time. Please click or type text which job do you prefer.");
+        case "FIND_JOB":
+            //get feedback with new jobs
+            sendToDialogFlow(senderID, 'job-enquiry');
             break;
 		default:
 			//unindentified payload
