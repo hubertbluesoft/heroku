@@ -814,6 +814,18 @@ function receivedPostback(event) {
             //get feedback with new jobs
 			sendToDialogFlow(senderID, "I want to work in your company");
             break;
+        case "RPA_DEVELOPER":
+            //get feedback with new jobs
+            sendToDialogFlow(senderID, "I want to work in your company");
+            break;
+        case "MANAGER":
+            //get feedback with new jobs
+            sendToDialogFlow(senderID, "I want to work in your company");
+            break;
+        case "NOT_INTERESTED":
+            //get feedback with new jobs
+            sendToDialogFlow(senderID, "I want to work in your company");
+            break;
 		default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
