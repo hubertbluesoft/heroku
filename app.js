@@ -790,13 +790,9 @@ function receivedPostback(event) {
             //user wants to chat
             sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you");
 			break;
-        case "ABOUT_US":
-            //get feedback with new jobs
-            sendToDialogFlow(senderID, 'Not interested')
-            break;
         case "FIND_JOB":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, 'job-enquiry');
+            sendToDialogFlow(senderID, 'job openings');
             break;
 		default:
 			//unindentified payload
