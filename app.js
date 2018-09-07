@@ -792,6 +792,7 @@ function receivedPostback(event) {
 			break;
         case "FIND_JOB":
             //get feedback with new jobs
+            sendTextMessage(senderID, "YES");
             sendToDialogFlow(senderID, 'job openings');
             break;
 		default:
