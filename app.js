@@ -777,7 +777,6 @@ function callSendAPI(messageData) {
  * 
  */
 function receivedPostback(event) {
-	var sender = event.sender.id;
 	var senderID = event.sender.id;
 	var recipientID = event.recipient.id;
 	var timeOfPostback = event.timestamp;
@@ -812,7 +811,7 @@ function receivedPostback(event) {
                         "payload": "More than 10 years"
                     }
                 ];
-                sendQuickReply(sender, replies);
+                sendQuickReply(senderID, replies);
             },3000)
 
             break;
