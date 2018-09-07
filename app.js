@@ -246,10 +246,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             }, 3000)
             break;
         case "job-enquiry":
-            handleMessages(messages, sender);
-            sendTypingOn(sender);
-            //ask what user wants to do next
-            setTimeout(function() {
                 let replies = [
                     {
                         "content_type":"text",
@@ -267,8 +263,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                         "payload":"More than 10 years"
                     }
                 ];
-                sendQuickReply(sender, messages, replies);
-            }, 3000)
+                sendQuickReply(sender, messages[0].text.text[0], replies);
             break;
 		default:
 			//unhandled action, just send back the text
