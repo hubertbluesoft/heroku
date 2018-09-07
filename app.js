@@ -792,7 +792,7 @@ function receivedPostback(event) {
 			break;
         case "FIND_JOB":
             //get feedback with new jobs
-			sendToDialogFlow(senderID, "good morning");
+			sendToDialogFlow(senderID, "I want to work in your company");
             break;
 		default:
 			//unindentified payload
