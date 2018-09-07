@@ -796,7 +796,7 @@ function receivedPostback(event) {
             break;
         case "FUN_NEWS":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, 'detailed-application');
+            sendToDialogFlow(senderID, 'bluesoft_job_application_details');
             break;
 		case "find_job":
             //user wants to chat
