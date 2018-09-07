@@ -793,6 +793,24 @@ function receivedPostback(event) {
         case "FIND_JOB":
             //get feedback with new jobs
 			sendToDialogFlow(senderID, "I want to work in your company");
+            let replies = [
+                {
+                    "content_type":"text",
+                    "title":"Less than 1 year",
+                    "payload":"Less than 1 year"
+                },
+                {
+                    "content_type":"text",
+                    "title":"Less than 10 years",
+                    "payload":"Less than 10 years"
+                },
+                {
+                    "content_type":"text",
+                    "title":"More than 10 years",
+                    "payload":"More than 10 years"
+                }
+            ];
+            sendQuickReply(sender, messages[0].text.text[0], replies);
             break;
 		default:
 			//unindentified payload
