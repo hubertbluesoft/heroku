@@ -10,7 +10,7 @@ const pg = require('pg')
 pg.defaults.ssl = true;
 const app = express();
 const uuid = require('uuid');
-
+const colors = require('./colors');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -208,7 +208,14 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
-        case "faq-delivery":
+        case "iphone_colors":
+            colors.readAllColors(function (allColors) {
+                let allColorsString = allColors.join(', ');
+                let reply = `IPhone xxx is available in ${allColorsString}. What is your favourite color?`;
+                sendTextMessage(sender, reply);
+            });
+            break;
+		case "faq-delivery":
             handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
