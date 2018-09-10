@@ -214,7 +214,19 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
-        case "iphone_colors":
+        case "buy.iphone":
+            colors.readUserColor(function(color) {
+                    let reply;
+                    if (color === '') {
+                        reply = 'In what color would you like to have it?';
+                    } else {
+                        reply = `Would you like to order it in your favourite color ${color}?`;
+                    }
+                    sendTextMessage(sender, reply);
+                }, sender
+            )
+            break;
+		case "iphone_colors":
             colors.readAllColors(function (allColors) {
                 let allColorsString = allColors.join(', ');
                 let reply = `IPhone xxx is available in ${allColorsString}. What is your favourite color?`;
