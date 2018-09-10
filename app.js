@@ -776,7 +776,7 @@ function greetUserText(userId) {
                 });
                 pool.end();
 
-				sendTextMessage(userId, "Welcome " + user.first_name + '!');
+				sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
@@ -844,7 +844,7 @@ function receivedPostback(event) {
         	break;
 		case "START_HERE":
             //user wants to chat
-            sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you");
+            sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you?");
 			break;
         case "FIND_JOB":
             //get feedback with new jobs
