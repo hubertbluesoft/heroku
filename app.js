@@ -11,6 +11,8 @@ pg.defaults.ssl = true;
 const app = express();
 const uuid = require('uuid');
 const colors = require('./colors');
+const userService = require('./user');
+const usersMap = new Map();
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -85,6 +87,12 @@ app.get('/', function (req, res) {
 	res.send('Hello world, I am a chat bot')
 })
 
+function setSessionAndUser(senderID) {
+    if (!sessionIds.has(senderID)) {
+        sessionIds.set(senderID, uuid.v1());
+    }
+}
+
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
 	console.log("request");
@@ -154,9 +162,7 @@ function receivedMessage(event) {
 	var timeOfMessage = event.timestamp;
 	var message = event.message;
 
-	if (!sessionIds.has(senderID)) {
-		sessionIds.set(senderID, uuid.v1());
-	}
+    setSessionAndUser(senderID);
 	//console.log("Received message for user %d and page %d at %d with message:", senderID, recipientID, timeOfMessage);
 	//console.log(JSON.stringify(message));
 
@@ -451,6 +457,14 @@ function sendTextMessage(recipientId, text) {
 	callSendAPI(messageData);
 }
 
+async function resolveAfterXSeconds(x) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(x);
+        }, x * 1000);
+    });
+}
+
 /*
  * Send an image using the Send API.
  *
@@ -734,65 +748,23 @@ function sendAccountLinking(recipientId) {
 
 	callSendAPI(messageData);
 }
+async function resolveAfterXSeconds(x) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(x);
+        }, x * 1000);
+    });
+}
 
-
-function greetUserText(userId) {
-	//first read user firstname
-	request({
-		uri: 'https://graph.facebook.com/v2.7/' + userId,
-		qs: {
-			access_token: config.FB_PAGE_TOKEN
-		}
-
-	}, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-
-			var user = JSON.parse(body);
-
-			if (user.first_name) {
-				console.log("FB user: %s %s, %s",
-					user.first_name, user.last_name, user.gender);
-
-                var pool = new pg.Pool(config.PG_CONFIG);
-                pool.connect(function(err, client, done) {
-                    if (err) {
-                        return console.error('Error acquiring client', err.stack);
-                    }
-                    var rows = [];
-                    client.query(`SELECT fb_id FROM users WHERE fb_id='${userId}' LIMIT 1`,
-                        function(err, result) {
-                            if (err) {
-                                console.log('Query error: ' + err);
-                            } else {
-                                if (result.rows.length === 0) {
-                                    let sql = 'INSERT INTO users (fb_id, first_name, last_name, profile_pic, ' +
-                                        'locale, timezone, gender) VALUES ($1, $2, $3, $4, $5, $6, $7)';
-                                    client.query(sql,
-                                        [
-                                            userId,
-                                            user.first_name,
-                                            user.last_name,
-                                            user.profile_pic,
-                                            user.locale,
-                                            user.timezone,
-                                            user.gender
-                                        ]);
-                                }
-                            }
-                        });
-                });
-                pool.end();
-
-				sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
-			} else {
-				console.log("Cannot get data for fb user with id",
-					userId);
-			}
-		} else {
-			console.error(response.error);
-		}
-
-	});
+async function greetUserText(userId) {
+    let user = usersMap.get(userId);
+    if (!user) {
+        await resolveAfterXSeconds(2);
+        user = usersMap.get(userId);
+    }
+    sendTextMessage(userId, "Welcome " + user.first_name + '! ' +
+        'I can answer frequently asked questions for you ' +
+        'and I perform job interviews. What can I help you with?');
 }
 
 /*
@@ -841,6 +813,13 @@ function receivedPostback(event) {
 	var recipientID = event.recipient.id;
 	var timeOfPostback = event.timestamp;
 
+    setSessionAndUser(senderID);
+
+    if (!usersMap.has(senderID)) {
+        userService.addUser(function(user){
+            usersMap.set(senderID, user);
+        }, senderID);
+    }
 	// The 'payload' param is a developer-defined field which is set in a postback 
 	// button for Structured Messages. 
 	var payload = event.postback.payload;
