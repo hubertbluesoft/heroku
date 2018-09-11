@@ -230,7 +230,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     sendTextMessage(sender, reply);
 
                 }, sender
-            )
+            );
             break;
 		case "iphone_colors":
             colors.readAllColors(function (allColors) {
