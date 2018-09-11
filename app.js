@@ -238,7 +238,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendTextMessage(sender, reply);
             });
             break;
-		case "faq-delivery":
+		/*case "faq-delivery":
             handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
@@ -297,7 +297,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     }
                 ];
                 sendQuickReply(sender, messages[0].text.text[0], replies);
-            break;
+            break;*/
 		default:
 			//unhandled action, just send back the text
             handleMessages(messages, sender);
