@@ -217,8 +217,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
         case "iphone_colors.favourite":
             colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
             //let reply = `Oh, I like it, too. I'll remember that.`;
+			var payload="RPA_DEVELOPER";
             //sendTextMessage(sender, reply);
-            payload:"RPA_DEVELOPER";
             break;
         case "buy.iphone":
             colors.readUserColor(function(color) {
