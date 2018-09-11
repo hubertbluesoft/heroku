@@ -235,7 +235,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 		case "iphone_colors":
             colors.readAllColors(function (allColors) {
                 let allColorsString = allColors.join(', ');
-                let reply = `IPhone xxx is available in ${allColorsString}. What is your favourite color?`;
+                let reply = `We're currently looking for new staff (${allColorsString}). Please click or type text which job do you prefer.`;
                 sendTextMessage(sender, reply);
             });
             break;
