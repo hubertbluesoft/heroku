@@ -216,8 +216,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 	switch (action) {
         case "iphone_colors.favourite":
             colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-            let reply = `Oh, I like it, too. I'll remember that.`;
-            sendTextMessage(sender, reply);
+            //let reply = `Oh, I like it, too. I'll remember that.`;
+            //sendTextMessage(sender, reply);
+			sendToDialogFlow(sender,"developer");
             break;
         case "buy.iphone":
             colors.readUserColor(function(color) {
