@@ -238,26 +238,26 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 let reply = `We're currently looking for new staff (${allColorsString}). Please click or type text which job do you prefer.`;
                 sendTextMessage(sender, reply);
             });
-
-            let replies = [
-                {
-                    "content_type":"text",
-                    "title":"RPA developer",
-                    "payload":"RPA_DEVELOPER"
-                },
-                {
-                    "content_type":"text",
-                    "title":"Manager",
-                    "payload":"MANAGER"
-                },
-                {
-                    "content_type":"text",
-                    "title":"Not interested",
-                    "payload":"NOT_INTERESTED"
-                }
-            ];
-            sendQuickReply(sender, messages[0].text.text[0], replies);
-
+            setTimeout(function() {
+                let replies = [
+                    {
+                        "content_type": "text",
+                        "title": "RPA developer",
+                        "payload": "RPA_DEVELOPER"
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "Manager",
+                        "payload": "MANAGER"
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "Not interested",
+                        "payload": "NOT_INTERESTED"
+                    }
+                ];
+                sendQuickReply(sender, messages[0].text.text[0], replies);
+            },3000)
             break;
 		/*case "faq-delivery":
             handleMessages(messages, sender);
