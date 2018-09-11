@@ -214,7 +214,7 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
-        case "detailed-application":
+        case "iphonexxx_colors.favourite":
             colors.updateUserColor(parameters.fields['user-name'].stringValue, sender);
             //let reply = `OK, we need more information about you. Do you agree to start recruitment`;
             //sendTextMessage(sender, reply);
