@@ -218,7 +218,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
             //let reply = `Oh, I like it, too. I'll remember that.`;
             //sendTextMessage(sender, reply);
-			sendToDialogFlow(sender,"developer");
+            payload:"RPA_DEVELOPER";
             break;
         case "buy.iphone":
             colors.readUserColor(function(color) {
