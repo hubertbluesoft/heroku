@@ -246,6 +246,26 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
                     } else {
                         reply = `We already have your job application as ${color}?`;
+
+                        let replies = [
+                            {
+                                "content_type":"text",
+                                "title":"RPA developer",
+                                "payload":"RPA_DEVELOPER"
+                            },
+                            {
+                                "content_type":"text",
+                                "title":"Manager",
+                                "payload":"MANAGER"
+                            },
+                            {
+                                "content_type":"text",
+                                "title":"Not interested",
+                                "payload":"NOT_INTERESTED"
+                            }
+                        ];
+                        sendQuickReply(sender, messages[0].text.text[0], replies);
+                    
                     }
                     sendTextMessage(sender, reply);
                 }, sender
