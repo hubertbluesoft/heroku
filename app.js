@@ -216,8 +216,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 	switch (action) {
         case "iphone_colors.favourite":
             colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-            //let reply = `Oh, I like it, too. I'll remember that.`;
-            //sendTextMessage(sender, reply);
+            let reply = `Oh, I like it, too. I'll remember that.`;
+            sendTextMessage(sender, reply);
             break;
         case "buy.iphone":
             colors.readUserColor(function(color) {
@@ -237,25 +237,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 let allColorsString = allColors.join(', ');
                 let reply = `We're currently looking for new staff (${allColorsString}). Please click or type text which job do you prefer.`;
                 sendTextMessage(sender, reply);
-
-                let replies = [
-                    {
-                        "content_type":"text",
-                        "title":"RPA developer",
-                        "payload":"RPA_DEVELOPER"
-                    },
-                    {
-                        "content_type":"text",
-                        "title":"Manager",
-                        "payload":"MANAGER"
-                    },
-                    {
-                        "content_type":"text",
-                        "title":"Not interested",
-                        "payload":"NOT_INTERESTED"
-                    }
-                ];
-                sendQuickReply(sender, messages[0].text.text[0], replies);
             });
             break;
 		/*case "faq-delivery":
