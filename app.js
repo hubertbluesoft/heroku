@@ -215,7 +215,7 @@ function handleEcho(messageId, appId, metadata) {
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
         case "iphone_colors.favourite":
-            colors.updateUserColor(parameters.fields['color'].stringValue, sender);
+            colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
             let reply = `Oh, I like it, too. I'll remember that.`;
             sendTextMessage(sender, reply);
             break;
@@ -224,49 +224,10 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     let reply;
                     if (color === '') {
                         reply = "We're currently looking for new staff. Please click or type text which job do you prefer?";
-
-                        let replies = [
-                            {
-                                "content_type":"text",
-                                "title":"RPA developer",
-                                "payload":"RPA_DEVELOPER"
-                            },
-                            {
-                                "content_type":"text",
-                                "title":"Manager",
-                                "payload":"MANAGER"
-                            },
-                            {
-                                "content_type":"text",
-                                "title":"Not interested",
-                                "payload":"NOT_INTERESTED"
-                            }
-                        ];
-                        sendQuickReply(sender, messages[0].text.text[0], replies);
-
                     } else {
                         reply = `We already have your job application as ${color}?`;
                     }
                     sendTextMessage(sender, reply);
-
-                let replies = [
-                    {
-                        "content_type":"text",
-                        "title":"RPA developer",
-                        "payload":"RPA_DEVELOPER"
-                    },
-                    {
-                        "content_type":"text",
-                        "title":"Manager",
-                        "payload":"MANAGER"
-                    },
-                    {
-                        "content_type":"text",
-                        "title":"Not interested",
-                        "payload":"NOT_INTERESTED"
-                    }
-                ];
-                sendQuickReply(sender, messages[0].text.text[0], replies);
 
                 }, sender
             )
