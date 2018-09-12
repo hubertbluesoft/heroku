@@ -781,6 +781,24 @@ async function greetUserText(userId) {
         user = usersMap.get(userId);
     }
     sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
+
+    handleMessages(messages, sender);
+    sendTypingOn(sender);
+    //ask what user wants to do next
+    setTimeout(function() {
+        let buttons = [
+            {
+                type: "web_url",
+                url: "https://bluesoft.net.pl/en/",
+                title: "About us"
+            },
+            {
+                type: "postback",
+                title: "Find job",
+                payload: "FIND_JOB"
+            }
+        ];
+    }
 }
 
 /*
