@@ -214,14 +214,22 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
-        case "bluesoft_job_application.name":
-            colors.updateUserName(parameters.fields['given-name'].stringValue, sender);
-            break;
+
 		case "bluesoft_job_application.job":
         	colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-        	let reply = `SAVE, Please tell your name`;
-            sendTextMessage(sender, reply);
+            sendTextMessage(sender, "Can you write yor name?");
             break;
+
+        case "bluesoft_job_application.name":
+            colors.updateUserName(parameters.fields['given-name'].stringValue, sender);
+            sendTextMessage(sender, "What is your current job position?");
+            break;
+
+        case "bluesoft_job_application.pervious-job":
+            colors.updateUserName(parameters.fields['pervious-job'].stringValue, sender);
+            sendTextMessage(sender, "How many years of experience do you have?");
+            break;
+
         case "buy.iphone":
             colors.readUserColor(function(color) {
                     let reply;
