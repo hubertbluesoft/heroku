@@ -780,21 +780,6 @@ async function greetUserText(userId) {
         await resolveAfterXSeconds(2);
         user = usersMap.get(userId);
     }
-    //sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
-
-        /*let buttons = [
-            {
-                type:"web_url",
-                url:"https://bluesoft.net.pl/en/",
-                title:"About us"
-            },
-            {
-                type:"postback",
-                title:"Find job",
-                payload:"FIND_JOB"
-            }
-        ];
-        sendButtonMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?", buttons);*/
 
     sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
 
@@ -802,13 +787,6 @@ async function greetUserText(userId) {
         {
             "title":"Bluesoft HR service",
             "image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
-            /*"subtitle":"We have the right hat for everyone.",
-            "default_action": {
-                "type": "web_url",
-                "url": "https://petersfancybrownhats.com/view?item=103",
-                "webview_height_ratio": "tall",
-            },
-            */
             "buttons":[
                 {
                     "type":"web_url",
