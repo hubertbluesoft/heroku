@@ -214,7 +214,7 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
-        case "iphonexxx_colors.favourite.custom":
+        case "bluesoft_job_application.name":
             colors.updateUserName(parameters.fields['given-name'].stringValue, sender);
             break;
 		case "iphonexxx_colors.favourite":
@@ -235,7 +235,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 }, sender
             )
             break;
-		case "iphone_colors":
+		case "bluesoft_job_application":
             colors.readAllColors(function (allColors) {
                 let allColorsString = allColors.join(', ');
                 let reply = `We're currently looking for new staff (${allColorsString}). Please click or type text which job do you prefer.`;
