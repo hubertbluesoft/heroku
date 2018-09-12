@@ -290,7 +290,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendGenericMessage(sender, elements);
                 }, 3000)
             break;
-			case "job-enquiry":
+			case "detailed-application":
                 colors.updateUserColor(parameters.fields['pervious-job'].stringValue, sender);
 				/*
                 let replies = [
