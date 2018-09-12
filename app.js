@@ -214,11 +214,11 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
-        /*case "iphonexxx_colors.favourite":
+        case "close":
             colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-            let reply = `OK, we need more information about you. Do you agree to start recruitment`;
+            let reply = `SAVE`;
             sendTextMessage(sender, reply);
-            break;*/
+            break;
         case "buy.iphone":
             colors.readUserColor(function(color) {
                     let reply;
@@ -265,19 +265,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             sendTypingOn(sender);
             //ask what user wants to do next
 			setTimeout(function() {
-                /*let buttons = [
-                    {
-                        type:"web_url",
-                        url:"https://bluesoft.net.pl/en/",
-                        title:"About us"
-                    },
-                    {
-                        type:"postback",
-                        title:"Find job",
-                        payload:"FIND_JOB"
-                    }
-                ];
-                sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);*/
+
                 sendTextMessage(sender, "Welcome " + sender.name + " to Bluesoft HR service how can we help you?");
 
                 let elements = [
