@@ -217,7 +217,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
         case "bluesoft_job_application.name":
             colors.updateUserName(parameters.fields['given-name'].stringValue, sender);
             break;
-		case "iphonexxx_colors.favourite":
+		case "bluesoft_job_application.job":
         	colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
         	let reply = `SAVE, Please tell your name`;
             sendTextMessage(sender, reply);
