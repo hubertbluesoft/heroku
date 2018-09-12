@@ -215,7 +215,7 @@ function handleEcho(messageId, appId, metadata) {
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
         case "iphonexxx_colors.favourite":
-            if (parameters.fields['job-vacancy'].stringValue != '') {
+            if (parameters.fields['exp'].stringValue != '') {
                 colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
             }
         	//let reply = `SAVE`;
