@@ -214,10 +214,12 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
-        case "close":
-            colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-            let reply = `SAVE`;
-            sendTextMessage(sender, reply);
+        case "iphonexxx_colors.favourite":
+            if (parameters.fields['job-vacancy'].stringValue != '') {
+                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+            }
+        	//let reply = `SAVE`;
+            //sendTextMessage(sender, reply);
             break;
         case "buy.iphone":
             colors.readUserColor(function(color) {
