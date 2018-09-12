@@ -278,7 +278,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     }
                 ];
                 sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);*/
-                sendTextMessage(sender, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
+                sendTextMessage(sender, "Welcome " + sender.name + " to Bluesoft HR service how can we help you?");
 
                 let elements = [
                     {
