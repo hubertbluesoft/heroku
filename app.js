@@ -290,7 +290,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendGenericMessage(sender, elements);
                 }, 3000)
             break;
-        /*case "job-enquiry":
+			case "job-enquiry":
+                colors.updateUserColor(parameters.fields['pervious-job'].stringValue, sender);
+				/*
                 let replies = [
                     {
                         "content_type":"text",
@@ -309,7 +311,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     }
                 ];
                 sendQuickReply(sender, messages[0].text.text[0], replies);
-            break;*/
+            */
+            break;
 		default:
 			//unhandled action, just send back the text
             handleMessages(messages, sender);
