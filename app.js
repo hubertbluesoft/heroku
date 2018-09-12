@@ -782,7 +782,7 @@ async function greetUserText(userId) {
     }
     //sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
 
-        let buttons = [
+        /*let buttons = [
             {
                 type:"web_url",
                 url:"https://bluesoft.net.pl/en/",
@@ -794,7 +794,32 @@ async function greetUserText(userId) {
                 payload:"FIND_JOB"
             }
         ];
-        sendButtonMessage(userId, "Welcome" + user.first_name + " to Bluesoft HR service how can we help you?", buttons);
+        sendButtonMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?", buttons);*/
+
+    let elements = [
+        {
+            "title":"Welcome!",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"We have the right hat for everyone.",
+            "default_action": {
+                "type": "web_url",
+                "url": "https://petersfancybrownhats.com/view?item=103",
+                "webview_height_ratio": "tall",
+            },
+            "buttons":[
+                {
+                    "type":"web_url",
+                    "url":"https://petersfancybrownhats.com",
+                    "title":"View Website"
+                },{
+                    "type":"postback",
+                    "title":"Start Chatting",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                }
+            ]
+        }
+    ]
+    sendGenericMessage(userId, elements);
 }
 
 /*
