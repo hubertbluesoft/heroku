@@ -798,19 +798,20 @@ async function greetUserText(userId) {
 
     let elements = [
         {
-            "title":"Welcome!",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
-            "subtitle":"We have the right hat for everyone.",
+            "title":"Bluesoft HR service",
+            "image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
+            /*"subtitle":"We have the right hat for everyone.",
             "default_action": {
                 "type": "web_url",
                 "url": "https://petersfancybrownhats.com/view?item=103",
                 "webview_height_ratio": "tall",
             },
+            */
             "buttons":[
                 {
                     "type":"web_url",
-                    "url":"https://petersfancybrownhats.com",
-                    "title":"View Website"
+                    "url":"https://bluesoft.net.pl/en/",
+                    "title":"About us"
                 },{
                     "type":"postback",
                     "title":"Start Chatting",
