@@ -781,7 +781,7 @@ async function greetUserText(userId) {
         user = usersMap.get(userId);
     }
     //sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
-	
+
         let buttons = [
             {
                 type:"web_url",
@@ -794,7 +794,7 @@ async function greetUserText(userId) {
                 payload:"FIND_JOB"
             }
         ];
-        sendButtonMessage(userId, "Welcome to Bluesoft HR service how can we help you?", buttons);
+        sendButtonMessage(userId, "Welcome" + user.first_name + " to Bluesoft HR service how can we help you?", buttons);
 }
 
 /*
