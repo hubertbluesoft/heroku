@@ -258,13 +258,14 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 ];
                 sendButtonMessage(sender, "What would you like to do next?", buttons);
             }, 3000)
-            break;
+            break;*/
+
         case "input-welcome":
         	handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
 			setTimeout(function() {
-                let buttons = [
+                /*let buttons = [
                     {
                         type:"web_url",
                         url:"https://bluesoft.net.pl/en/",
@@ -276,10 +277,30 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                         payload:"FIND_JOB"
                     }
                 ];
-                sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);
-            }, 3000)
+                sendButtonMessage(sender, "Welcome to Bluesoft HR service how can we help you?", buttons);*/
+                sendTextMessage(sender, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
+
+                let elements = [
+                    {
+                        "title":"Bluesoft HR service",
+                        "image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
+                        "buttons":[
+                            {
+                                "type":"web_url",
+                                "url":"https://bluesoft.net.pl/en/",
+                                "title":"About us"
+                            },{
+                                "type":"postback",
+                                "title":"Find job",
+                                "payload":"FIND_JOB"
+                            }
+                        ]
+                    }
+                ]
+                sendGenericMessage(sender, elements);
+                }, 3000)
             break;
-        case "job-enquiry":
+        /*case "job-enquiry":
                 let replies = [
                     {
                         "content_type":"text",
