@@ -814,8 +814,8 @@ async function greetUserText(userId) {
                     "title":"About us"
                 },{
                     "type":"postback",
-                    "title":"Start Chatting",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                    "title":"Find job",
+                    "payload":"FIND_JOB"
                 }
             ]
         }
