@@ -291,8 +291,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 }, 3000)
             break;
 			case "detailed-application":
-                if(parameters.fields['pervious-job'].stringValue == '')
-				colors.updateUserColor(parameters.fields['pervious-job'].stringValue, sender);
+                if(parameters.fields['pervious-job'].stringValue == '') {
+                    colors.updateUserColor(parameters.fields['pervious-job'].stringValue, sender);
+                }
 				/*
                 let replies = [
                     {
