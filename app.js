@@ -796,6 +796,8 @@ async function greetUserText(userId) {
         ];
         sendButtonMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?", buttons);*/
 
+    sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
+
     let elements = [
         {
             "title":"Bluesoft HR service",
