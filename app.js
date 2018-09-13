@@ -225,8 +225,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             sendTextMessage(sender, "What is your current job title?");
             break;
 
-        case "bluesoft_job_application.name":
-            colors.updateUserName(parameters.fields['pervious-job'].stringValue, sender);
+        case "bluesoft_job_application.previous-job":
+            colors.updateUserName(parameters.fields['previous-job'].stringValue, sender);
             sendTextMessage(sender, "What is your current job title?");
             break;
 
