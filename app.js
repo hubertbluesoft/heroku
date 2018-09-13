@@ -227,7 +227,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
         case "bluesoft_job_application.previous-job":
             colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-            sendTextMessage(sender, "What is your current job title?");
+            sendTextMessage(sender, "JOB SAVE");
             break;
 
         case "buy.iphone":
