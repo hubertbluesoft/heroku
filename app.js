@@ -216,10 +216,10 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 	switch (action) {
 
 		case "bluesoft_job_application.job":
-			setTimeout(function() {
-                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                sendTextMessage(sender, "Can you write yor name?");
-                },10000)
+			//setTimeout(function() {
+                //colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+                //sendTextMessage(sender, "Can you write yor name?");
+                //},10000)
 			break;
 
         case "buy.iphone":
