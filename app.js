@@ -215,11 +215,9 @@ function handleEcho(messageId, appId, metadata) {
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
 	switch (action) {
 
-		case "bluesoft_job_application.job":
-			//setTimeout(function() {
-                //colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                //sendTextMessage(sender, "Can you write yor name?");
-                //},10000)
+		case "bluesoft_job_application.name":
+                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+                sendTextMessage(sender, "What is your exp?");
 			break;
 
         case "buy.iphone":
