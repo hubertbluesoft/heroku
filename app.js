@@ -221,8 +221,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 			break;
 
         case "bluesoft_job_application.name":
-            colors.updateUserName(parameters.fields['give-name'].stringValue, sender);
-            sendTextMessage(sender, "What is your name?");
+            colors.updateUserName(parameters.fields['given-name'].stringValue, sender);
+            sendTextMessage(sender, "What is exp?");
             break;
 
         case "buy.iphone":
