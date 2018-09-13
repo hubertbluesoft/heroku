@@ -78,8 +78,8 @@ module.exports = {
                 ]);
         });
         pool.end();
-    }
-    updatePreviousJob: function(first_name, userId) {
+    },
+    updatePreviousJob: function(previous_job, userId) {
         var pool = new pg.Pool(config.PG_CONFIG);
         pool.connect(function(err, client, done) {
             if (err) {
@@ -88,7 +88,7 @@ module.exports = {
             let sql = 'UPDATE public.users SET previous-job=$1 WHERE fb_id=$2';
             client.query(sql,
                 [
-                    first_name,
+                    previous_job,
                     userId
                 ]);
         });
