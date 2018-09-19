@@ -220,7 +220,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendTextMessage(sender, "What is your name?");
 			break;
 
-        case "job_application":
+        case "detailed-application":
             if (isDefined(contexts[0]) &&
                 (contexts[0].name.includes('job_application') || contexts[0].name.includes('bluesoft_job_application_details_example_dialog_context'))
                 && contexts[0].parameters) {
