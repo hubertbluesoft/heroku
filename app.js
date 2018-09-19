@@ -638,8 +638,14 @@ function sendButtonMessage(recipientId, text, buttons) {
 
 	callSendAPI(messageData);
 }
+/*
+function test(variable1,varible2)
+{
+	var variable1 ={
 
-
+	};
+}
+*/
 function sendGenericMessage(recipientId, elements) {
 	var messageData = {
 		recipient: {
@@ -904,7 +910,13 @@ function receivedPostback(event) {
             //get feedback with new jobs
             sendToDialogFlow(senderID, "Not interested");
             break;
-		default:
+        case "SEND":
+            //get feedback with new jobs
+            colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
+            sendTextMessage(sender, "JOB SAVE");
+            break;
+
+        default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
 			break;
