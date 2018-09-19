@@ -216,11 +216,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 	switch (action) {
 
-		case "bluesoft_job_application.job":
-                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                sendTextMessage(sender, "What is your name?");
-			break;
-
         /*case "detailed-application":
             if (isDefined(contexts[0]) &&
                 (contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/job_application') || contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/bluesoft_job_application_details_example_dialog_context'))
@@ -247,6 +242,11 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 }
             }
             break;*/
+
+		case "bluesoft_job_application.job":
+                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+                //sendTextMessage(sender, "What is your name?");
+			break;
 
 		case "bluesoft_job_application.name":
             colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
