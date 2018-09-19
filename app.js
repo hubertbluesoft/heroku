@@ -237,9 +237,11 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     && contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
                 if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
                     && job_vacancy != '') {
-                    handleMessages(messages, sender);
+
                     colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
                     sendTextMessage(sender, "YES");
+
+                    handleMessages(messages, sender);
                 } else {
                     handleMessages(messages, sender);
                 }
