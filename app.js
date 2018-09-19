@@ -241,7 +241,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
                     sendTextMessage(sender, "YES");
 
-                    //handleMessages(messages, sender);
+                    handleMessages(messages, sender);
                 } else {
                     handleMessages(messages, sender);
                 }
