@@ -235,12 +235,14 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 let job_vacancy = (isDefined(contexts[0].parameters.fields['job-vacancy'])
                     && contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
                 if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
-                    && job_vacancy != ''){
-                    colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                    sendTextMessage(sender, "YES YES YES");
-                }
-			break;
-                    case "bluesoft_job_application.name":
+                    && job_vacancy != '')
+
+				colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+                sendTextMessage(sender, "YES YES YES");
+            }
+                break;
+
+		case "bluesoft_job_application.name":
             colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
             sendTextMessage(sender, "What is your current job title?");
             break;
