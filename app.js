@@ -213,6 +213,30 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
+	switch (contexts)
+	{
+		case "job_application":
+            if (isDefined(contexts[0]) &&
+                (contexts[0].name.includes('job_application') || contexts[0].name.includes('bluesoft_job_application_details_example_dialog_context'))
+                && contexts[0].parameters) {
+                let phone_number = (isDefined(contexts[0].parameters.fields['phone-number'])
+                    && contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
+                let user_name = (isDefined(contexts[0].parameters.fields['user-name'])
+                    && contexts[0].parameters.fields['user-name'] != '') ? contexts[0].parameters.fields['user-name'].stringValue : '';
+                let previous_job = (isDefined(contexts[0].parameters.fields['previous-job'])
+                    && contexts[0].parameters.fields['previous-job'] != '') ? contexts[0].parameters.fields['previous-job'].stringValue : '';
+                let years_of_experience = (isDefined(contexts[0].parameters.fields['years-of-experience'])
+                    && contexts[0].parameters.fields['years-of-experience'] != '') ? contexts[0].parameters.fields['years-of-experience'].stringValue : '';
+                let job_vacancy = (isDefined(contexts[0].parameters.fields['job-vacancy'])
+                    && contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
+                if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
+                    && job_vacancy != '') {
+                    colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+                    sendTextMessage(sender, "YES YES YES");
+                }
+            }
+			break;
+	}
 	switch (action) {
 
 		case "bluesoft_job_application.job":
@@ -220,7 +244,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendTextMessage(sender, "What is your name?");
 			break;
 
-        case "detailed-application":
+        /*case "detailed-application":
             if (isDefined(contexts[0]) &&
                 (contexts[0].name.includes('job_application') || contexts[0].name.includes('bluesoft_job_application_details_example_dialog_context'))
                 && contexts[0].parameters) {
@@ -240,7 +264,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     sendTextMessage(sender, "YES YES YES");
                 }
 				}
-                break;
+                break;*/
 
 		case "bluesoft_job_application.name":
             colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
