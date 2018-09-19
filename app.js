@@ -230,6 +230,11 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             sendTextMessage(sender, "JOB SAVE");
             break;
 
+        case "custom.payload":
+            colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
+            sendTextMessage(sender, "JOB SAVE");
+            break;
+
         case "buy.iphone":
             colors.readUserColor(function(color) {
                     let reply;
@@ -910,12 +915,12 @@ function receivedPostback(event) {
             //get feedback with new jobs
             sendToDialogFlow(senderID, "Not interested");
             break;
-        case "SEND":
+        /*case "SEND":
             //get feedback with new jobs
             colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, senderID);
             sendTextMessage(senderID, "JOB SAVE");
             break;
-
+		*/
         default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
