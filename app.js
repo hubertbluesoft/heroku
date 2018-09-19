@@ -216,7 +216,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 	switch (action) {
 
-        case "detailed-application":/*
+        case "detailed-application":
             if (isDefined(contexts[0]) &&
                 (contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/job_application') || contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/bluesoft_job_application_details_example_dialog_context'))
                 && contexts[0].parameters) {
@@ -240,7 +240,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 } else {
                     handleMessages(messages, sender);
                 }
-            }*/
+            }
             break;
 
 		case "bluesoft_job_application.job":
