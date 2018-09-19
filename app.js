@@ -245,7 +245,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 		case "bluesoft_job_application.job":
                 colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                //sendTextMessage(sender, "What is your name?");
+                sendTextMessage(sender, "What is your name?");
 			break;
 
 		case "bluesoft_job_application.name":
