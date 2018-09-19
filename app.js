@@ -912,8 +912,8 @@ function receivedPostback(event) {
             break;
         case "SEND":
             //get feedback with new jobs
-            colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-            sendTextMessage(sender, "JOB SAVE");
+            colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, senderID);
+            sendTextMessage(senderID, "JOB SAVE");
             break;
 
         default:
