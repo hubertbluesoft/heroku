@@ -213,11 +213,17 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleDialogFlowAction(sender, action, messages, contexts, parameters) {
-	switch (contexts)
-	{
-		case "job_application":
+
+	switch (action) {
+
+		case "bluesoft_job_application.job":
+                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+                sendTextMessage(sender, "What is your name?");
+			break;
+
+        case "detailed-application":
             if (isDefined(contexts[0]) &&
-                (contexts[0].name.includes('job_application') || contexts[0].name.includes('bluesoft_job_application_details_example_dialog_context'))
+                (contexts[0].name.includes('job_application') || contexts[0].name.includes('job-application-details_dialog_context'))
                 && contexts[0].parameters) {
                 let phone_number = (isDefined(contexts[0].parameters.fields['phone-number'])
                     && contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
@@ -231,18 +237,14 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     && contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
                 if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
                     && job_vacancy != '') {
+                    handleMessages(messages, sender);
                     colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                    sendTextMessage(sender, "YES YES YES");
+                    sendTextMessage(sender, "YES");
+                } else {
+                    handleMessages(messages, sender);
                 }
             }
-			break;
-	}
-	switch (action) {
-
-		case "bluesoft_job_application.job":
-                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                sendTextMessage(sender, "What is your name?");
-			break;
+            break;
 
         /*case "detailed-application":
             if (isDefined(contexts[0]) &&
