@@ -223,7 +223,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
         case "detailed-application":
             if (isDefined(contexts[0]) &&
-                (contexts[0].name.includes('job_application') || contexts[0].name.includes('job-application-details_dialog_context'))
+                (contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/job_application') || contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/bluesoft_job_application_details_example_dialog_context'))
                 && contexts[0].parameters) {
                 let phone_number = (isDefined(contexts[0].parameters.fields['phone-number'])
                     && contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
