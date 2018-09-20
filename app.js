@@ -235,8 +235,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 						if (phone_number == '' && user_name != '' && previous_job != '' && years_of_experience == '') {
 
-								colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
-
 								let replies = [
 										{
 												"content_type":"text",
@@ -256,6 +254,10 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								];
 								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
 						} else if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != '') {
+									colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
+									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
+									
 									sendTextMessage(sender, "SAVE");
 			            break;
 
