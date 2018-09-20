@@ -256,7 +256,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						} else if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
 								&& job_vacancy != '') {
 
-									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
+									colors.updateUserName(user-name, sender);
 			            sendTextMessage(sender, "What is your current job title?");
 			            break;
 
