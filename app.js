@@ -936,8 +936,7 @@ function receivedPostback(event) {
 						break;
         case "FIND_JOB":
             //get feedback with new jobs
-						handleDialogFlowAction("detailed-application");
-						//sendToDialogFlow(senderID, "I want to work in your company");
+						sendToDialogFlow(senderID, "I want to work in your company");
             break;
         case "NOT_INTERESTED":
             //get feedback with new jobs

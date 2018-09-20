@@ -108,5 +108,20 @@ module.exports = {
                 ]);
         });
         pool.end();
+    },
+    updateYearsOfExperience: function(years_of_experience, userId) {
+        var pool = new pg.Pool(config.PG_CONFIG);
+        pool.connect(function(err, client, done) {
+            if (err) {
+                return console.error('Error acquiring client', err.stack);
+            }
+            let sql = 'UPDATE public.users SET years_of_experience=$1 WHERE fb_id=$2';
+            client.query(sql,
+                [
+                    years_of_experience,
+                    userId
+                ]);
+        });
+        pool.end();
     }
 }
