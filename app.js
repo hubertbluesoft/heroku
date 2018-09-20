@@ -300,7 +300,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 }, sender
             )
             break;
-		case "bluesoft_job_application":
+		case "job":
             colors.readAllColors(function (allColors) {
                 let allColorsString = allColors.join(', ');
                 let reply = `We're currently looking for new staff (${allColorsString}). Please click or type text which job do you prefer.`;
