@@ -13,6 +13,7 @@ const uuid = require('uuid');
 const colors = require('./colors');
 const userService = require('./user');
 const usersMap = new Map();
+const fbService = require('./fb-service');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -107,7 +108,7 @@ app.get('/webhook/', function (req, res) {
 /*
  * All callbacks for Messenger are POST-ed. They will be sent to the same
  * webhook. Be sure to subscribe your app to your page to receive callbacks
- * for your page. 
+ * for your page.
  * https://developers.facebook.com/docs/messenger-platform/product-overview/setup#subscribe_app
  *
  */
@@ -196,7 +197,7 @@ function receivedMessage(event) {
 
 function handleMessageAttachments(messageAttachments, senderID){
 	//for now just reply
-	sendTextMessage(senderID, "Attachment received. Thank you.");	
+	sendTextMessage(senderID, "Attachment received. Thank you.");
 }
 
 function handleQuickReply(senderID, quickReply, messageId) {
@@ -216,32 +217,56 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 	switch (action) {
 
-        case "detailed-application":
-            if (isDefined(contexts[0]) &&
-                (contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/job_application') || contexts[0].name.includes('projects/test-chatbot-heroku/agent/sessions/4010f8ca-e918-4eb7-0a74-c55c2ba72d81/contexts/bluesoft_job_application_details_example_dialog_context'))
-                && contexts[0].parameters) {
-                let phone_number = (isDefined(contexts[0].parameters.fields['phone-number'])
-                    && contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
-                let user_name = (isDefined(contexts[0].parameters.fields['user-name'])
-                    && contexts[0].parameters.fields['user-name'] != '') ? contexts[0].parameters.fields['user-name'].stringValue : '';
-                let previous_job = (isDefined(contexts[0].parameters.fields['previous-job'])
-                    && contexts[0].parameters.fields['previous-job'] != '') ? contexts[0].parameters.fields['previous-job'].stringValue : '';
-                let years_of_experience = (isDefined(contexts[0].parameters.fields['years-of-experience'])
-                    && contexts[0].parameters.fields['years-of-experience'] != '') ? contexts[0].parameters.fields['years-of-experience'].stringValue : '';
-                let job_vacancy = (isDefined(contexts[0].parameters.fields['job-vacancy'])
-                    && contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
-                if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
-                    && job_vacancy != '') {
+				case "detailed-application":
+				if (fbService.isDefined(contexts[0]) &&
+						(contexts[0].name.includes('job_application') || contexts[0].name.includes('job-application-details_dialog_context'))
+						&& contexts[0].parameters) {
+						let phone_number = (fbService.isDefined(contexts[0].parameters.fields['phone-number'])
+								&& contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
+						let user_name = (fbService.isDefined(contexts[0].parameters.fields['user-name'])
+								&& contexts[0].parameters.fields['user-name'] != '') ? contexts[0].parameters.fields['user-name'].stringValue : '';
+						let previous_job = (fbService.isDefined(contexts[0].parameters.fields['previous-job'])
+								&& contexts[0].parameters.fields['previous-job'] != '') ? contexts[0].parameters.fields['previous-job'].stringValue : '';
+						let years_of_experience = (fbService.isDefined(contexts[0].parameters.fields['years-of-experience'])
+								&& contexts[0].parameters.fields['years-of-experience'] != '') ? contexts[0].parameters.fields['years-of-experience'].stringValue : '';
+						let job_vacancy = (fbService.isDefined(contexts[0].parameters.fields['job-vacancy'])
+								&& contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
 
-                    colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                    sendTextMessage(sender, "YES");
 
-                    handleMessages(messages, sender);
-                } else {
-                    handleMessages(messages, sender);
-                }
-            }
-            break;
+						if (phone_number == '' && user_name != '' && previous_job != '' && years_of_experience == '') {
+
+								let replies = [
+										{
+												"content_type":"text",
+												"title":"Less than 1 year",
+												"payload":"Less than 1 year"
+										},
+										{
+												"content_type":"text",
+												"title":"Less than 10 years",
+												"payload":"Less than 10 years"
+										},
+										{
+												"content_type":"text",
+												"title":"More than 10 years",
+												"payload":"More than 10 years"
+										}
+								];
+								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+						} else if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != ''
+								&& job_vacancy != '') {
+
+									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
+			            sendTextMessage(sender, "What is your current job title?");
+			            break;
+
+								fbService.handleMessages(messages, sender);
+
+						} else {
+								fbService.handleMessages(messages, sender);
+						}
+				}
+				break;
 
 		case "bluesoft_job_application.job":
                 colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
@@ -863,8 +888,8 @@ async function greetUserText(userId) {
 }
 
 /*
- * Call the Send API. The message data goes in the body. If successful, we'll 
- * get the message id in a response 
+ * Call the Send API. The message data goes in the body. If successful, we'll
+ * get the message id in a response
  *
  */
 function callSendAPI(messageData) {
@@ -899,9 +924,9 @@ function callSendAPI(messageData) {
 /*
  * Postback Event
  *
- * This event is called when a postback is tapped on a Structured Message. 
+ * This event is called when a postback is tapped on a Structured Message.
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
- * 
+ *
  */
 function receivedPostback(event) {
 	var senderID = event.sender.id;
@@ -915,8 +940,8 @@ function receivedPostback(event) {
             usersMap.set(senderID, user);
         }, senderID);
     }
-	// The 'payload' param is a developer-defined field which is set in a postback 
-	// button for Structured Messages. 
+	// The 'payload' param is a developer-defined field which is set in a postback
+	// button for Structured Messages.
 	var payload = event.postback.payload;
 
 	switch (payload) {
@@ -967,7 +992,7 @@ function receivedPostback(event) {
  *
  * This event is called when a previously-sent message has been read.
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-read
- * 
+ *
  */
 function receivedMessageRead(event) {
 	var senderID = event.sender.id;
@@ -987,7 +1012,7 @@ function receivedMessageRead(event) {
  * This event is called when the Link Account or UnLink Account action has been
  * tapped.
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/account-linking
- * 
+ *
  */
 function receivedAccountLink(event) {
 	var senderID = event.sender.id;
@@ -1003,7 +1028,7 @@ function receivedAccountLink(event) {
 /*
  * Delivery Confirmation Event
  *
- * This event is sent to confirm the delivery of a message. Read more about 
+ * This event is sent to confirm the delivery of a message. Read more about
  * these fields at https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-delivered
  *
  */
@@ -1028,8 +1053,8 @@ function receivedDeliveryConfirmation(event) {
 /*
  * Authorization Event
  *
- * The value for 'optin.ref' is defined in the entry point. For the "Send to 
- * Messenger" plugin, it is the 'data-ref' field. Read more at 
+ * The value for 'optin.ref' is defined in the entry point. For the "Send to
+ * Messenger" plugin, it is the 'data-ref' field. Read more at
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/authentication
  *
  */
@@ -1039,9 +1064,9 @@ function receivedAuthentication(event) {
 	var timeOfAuth = event.timestamp;
 
 	// The 'ref' field is set in the 'Send to Messenger' plugin, in the 'data-ref'
-	// The developer can set this to an arbitrary value to associate the 
+	// The developer can set this to an arbitrary value to associate the
 	// authentication callback with the 'Send to Messenger' click event. This is
-	// a way to do account linking when the user clicks the 'Send to Messenger' 
+	// a way to do account linking when the user clicks the 'Send to Messenger'
 	// plugin.
 	var passThroughParam = event.optin.ref;
 
@@ -1055,8 +1080,8 @@ function receivedAuthentication(event) {
 }
 
 /*
- * Verify that the callback came from Facebook. Using the App Secret from 
- * the App Dashboard, we can verify the signature that is sent with each 
+ * Verify that the callback came from Facebook. Using the App Secret from
+ * the App Dashboard, we can verify the signature that is sent with each
  * callback in the x-hub-signature field, located in the header.
  *
  * https://developers.facebook.com/docs/graph-api/webhooks#setup
