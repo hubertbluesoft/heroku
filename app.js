@@ -845,8 +845,8 @@ async function greetUserText(userId) {
         await resolveAfterXSeconds(2);
         user = usersMap.get(userId);
     }
-
-    sendTextMessage(userId, "Welcome " + user.first_name + " to Bluesoft HR service how can we help you?");
+		//We can use user.first_name to print name)
+    sendTextMessage(userId, "Welcome to Bluesoft HR service how can we help you?");
 
     let elements = [
         {
