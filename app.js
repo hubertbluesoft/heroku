@@ -928,15 +928,16 @@ function receivedPostback(event) {
 
 	switch (payload) {
         case "GET_STARTED":
-        	greetUserText(senderID);
-        	break;
-		case "START_HERE":
+        		greetUserText(senderID);
+        		break;
+				case "START_HERE":
             //user wants to chat
 						greetUserText(senderID);
-			break;
+						break;
         case "FIND_JOB":
             //get feedback with new jobs
-						sendToDialogFlow(senderID, "I want to work in your company");
+						handleDialogFlowAction("detailed-application");
+						//sendToDialogFlow(senderID, "I want to work in your company");
             break;
         case "NOT_INTERESTED":
             //get feedback with new jobs
