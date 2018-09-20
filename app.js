@@ -235,7 +235,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								&& contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
 
 
-						if (phone_number == '' && user_name != '' && previous_job != '' && years_of_experience == '') {
+						if (phone_number == '' && user_name != ''  && user_lastname != '' && previous_job != '' && years_of_experience == '') {
 
 								let replies = [
 										{
@@ -260,7 +260,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
 									colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
 									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-									colors.updatePreviousJob(parameters.fields['years_of_experience'].stringValue, sender);
+									colors.updateYearsOfExperience(parameters.fields['years_of_experience'].stringValue, sender);
 									sendTextMessage(sender, "SAVE");
 			            break;
 
