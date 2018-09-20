@@ -257,7 +257,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 									colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
 									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
 									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-									
+
 									sendTextMessage(sender, "SAVE");
 			            break;
 
@@ -268,26 +268,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						}
 				}
 				break;
-
-		case "bluesoft_job_application.job":
-                colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
-                sendTextMessage(sender, "What is your name?");
-			break;
-
-		case "bluesoft_job_application.name":
-            colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
-            sendTextMessage(sender, "What is your current job title?");
-            break;
-
-        case "bluesoft_job_application.previous-job":
-            colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-            sendTextMessage(sender, "JOB SAVE");
-            break;
-
-        case "custom.payload":
-            colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-            sendTextMessage(sender, "JOB SAVE");
-            break;
 
         case "buy.iphone":
             colors.readUserColor(function(color) {
@@ -951,28 +931,16 @@ function receivedPostback(event) {
         	break;
 		case "START_HERE":
             //user wants to chat
-            sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you?");
+            //sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you?");
+						greetUserText(senderID);
 			break;
         case "FIND_JOB":
             //get feedback with new jobs
-			sendToDialogFlow(senderID, "I want to work in your company");
-            break;
-        case "RPA_DEVELOPER":
-            //get feedback with new jobs
-            sendToDialogFlow(senderID, "RPA Developer");
-            break;
-        case "MANAGER":
-            //get feedback with new jobs
-            sendToDialogFlow(senderID, "Manager");
+						sendToDialogFlow(senderID, "I want to work in your company");
             break;
         case "NOT_INTERESTED":
             //get feedback with new jobs
             sendToDialogFlow(senderID, "Not interested");
-            break;
-		case "SEND":
-            //get feedback with new jobs
-            colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, senderID);
-            sendTextMessage(senderID, "JOB SAVE");
             break;
 
         default:
