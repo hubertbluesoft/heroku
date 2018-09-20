@@ -225,6 +225,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								&& contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
 						let user_name = (fbService.isDefined(contexts[0].parameters.fields['user-name'])
 								&& contexts[0].parameters.fields['user-name'] != '') ? contexts[0].parameters.fields['user-name'].stringValue : '';
+						let user_lastname = (fbService.isDefined(contexts[0].parameters.fields['user-lastname'])
+								&& contexts[0].parameters.fields['user-lastname'] != '') ? contexts[0].parameters.fields['user-lastname'].stringValue : '';
 						let previous_job = (fbService.isDefined(contexts[0].parameters.fields['previous-job'])
 								&& contexts[0].parameters.fields['previous-job'] != '') ? contexts[0].parameters.fields['previous-job'].stringValue : '';
 						let years_of_experience = (fbService.isDefined(contexts[0].parameters.fields['years-of-experience'])
@@ -253,12 +255,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										}
 								];
 								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-						} else if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != '') {
+						} else if (phone_number != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience != '') {
 									colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
 									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
 									colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
 									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-
+									colors.updatePreviousJob(parameters.fields['years_of_experience'].stringValue, sender);
 									sendTextMessage(sender, "SAVE");
 			            break;
 
