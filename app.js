@@ -256,6 +256,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						} else if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != '') {
 									colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
 									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
+									colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
 									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
 
 									sendTextMessage(sender, "SAVE");
@@ -313,10 +314,10 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
         case "input-welcome":
         	handleMessages(messages, sender);
             sendTypingOn(sender);
-            //ask what user wants to do next
+            //You can use sender.name to print name
 			setTimeout(function() {
 
-                sendTextMessage(sender, "Welcome " + sender.name + " to Bluesoft HR service how can we help you?");
+                sendTextMessage(sender, "Welcome to Bluesoft HR service how can we help you?");
 
                 let elements = [
                     {
@@ -845,7 +846,7 @@ async function greetUserText(userId) {
         await resolveAfterXSeconds(2);
         user = usersMap.get(userId);
     }
-		//We can use user.first_name to print name)
+		//You can use user.first_name to print name
     sendTextMessage(userId, "Welcome to Bluesoft HR service how can we help you?");
 
     let elements = [
@@ -931,7 +932,6 @@ function receivedPostback(event) {
         	break;
 		case "START_HERE":
             //user wants to chat
-            //sendTextMessage(senderID, "Welcome to Bluesoft HR service how can we help you?");
 						greetUserText(senderID);
 			break;
         case "FIND_JOB":

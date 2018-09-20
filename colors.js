@@ -79,6 +79,21 @@ module.exports = {
         });
         pool.end();
     },
+    updateUserLastname: function(last_name, userId) {
+        var pool = new pg.Pool(config.PG_CONFIG);
+        pool.connect(function(err, client, done) {
+            if (err) {
+                return console.error('Error acquiring client', err.stack);
+            }
+            let sql = 'UPDATE public.users SET last_name=$1 WHERE fb_id=$2';
+            client.query(sql,
+                [
+                    last_name,
+                    userId
+                ]);
+        });
+        pool.end();
+    },
     updatePreviousJob: function(previous_job, userId) {
         var pool = new pg.Pool(config.PG_CONFIG);
         pool.connect(function(err, client, done) {
