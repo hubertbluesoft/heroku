@@ -342,7 +342,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 ]
                 sendGenericMessage(sender, elements);
 							}, 3000)*/
-						greetUserText(senderID);
+						greetUserText(sender);
 
             break;
 
