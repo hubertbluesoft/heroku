@@ -286,10 +286,13 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             )
             break;
 		case "job":
+
             colors.readAllJob(function (all_job) {
-                let allJobString = all_job.join(', ');
-                let reply = `We're currently looking for new staff (${allJobString}). Please click or type text which job do you prefer.`;
+								setTimeout(function() {
+								let allJobString = all_job.join(', ');
+								let reply = `We're currently looking for new staff (${allJobString}). Please click or type text which job do you prefer.`;
                 sendTextMessage(sender, reply);
+								}, 3000)
             });
             break;
 		/*case "faq-delivery":
