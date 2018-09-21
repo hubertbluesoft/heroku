@@ -12,7 +12,7 @@ module.exports = {
             }
             client
                 .query(
-                    'SELECT color FROM public.all_job',
+                    'SELECT job FROM public.all_job',
                     function(err, result) {
                         if (err) {
                             console.log(err);
