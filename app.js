@@ -240,17 +240,17 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										{
 												"content_type":"text",
 												"title":"More than 1 year",
-												"payload":"FIRST_YEAR"
+												"payload":"More than 1 year"
 										},
 										{
 												"content_type":"text",
 												"title":"More than 3 years",
-												"payload":"THIRD_YEAR"
+												"payload":"More than 3 yearsR"
 										},
 										{
 												"content_type":"text",
 												"title":"More than 5 years",
-												"payload":"FIFTH_YEAR"
+												"payload":"More than 5 years"
 										}
 								];
 								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
