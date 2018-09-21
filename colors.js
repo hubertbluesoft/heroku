@@ -64,6 +64,21 @@ module.exports = {
         });
         pool.end();
     },
+    updateJobVacancy: function(job_vacancy, userId) {
+        var pool = new pg.Pool(config.PG_CONFIG);
+        pool.connect(function(err, client, done) {
+            if (err) {
+                return console.error('Error acquiring client', err.stack);
+            }
+            let sql = 'UPDATE public.users SET job_vacancy=$1 WHERE fb_id=$2';
+            client.query(sql,
+                [
+                    job_vacancy,
+                    userId
+                ]);
+        });
+        pool.end();
+    },
     updateUserName: function(first_name, userId) {
         var pool = new pg.Pool(config.PG_CONFIG);
         pool.connect(function(err, client, done) {
@@ -119,6 +134,21 @@ module.exports = {
             client.query(sql,
                 [
                     years_of_experience,
+                    userId
+                ]);
+        });
+        pool.end();
+    },
+    updatePhoneNumber: function(phone_number, userId) {
+        var pool = new pg.Pool(config.PG_CONFIG);
+        pool.connect(function(err, client, done) {
+            if (err) {
+                return console.error('Error acquiring client', err.stack);
+            }
+            let sql = 'UPDATE public.users SET phone_number=$1 WHERE fb_id=$2';
+            client.query(sql,
+                [
+                    phone_number,
                     userId
                 ]);
         });

@@ -255,11 +255,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								];
 								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
 						} else if (phone_number != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience != '') {
-									colors.updateUserColor(parameters.fields['job-vacancy'].stringValue, sender);
+									colors.updateJobVacancy(parameters.fields['job-vacancy'].stringValue, sender);
 									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
 									colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
 									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
 									colors.updateYearsOfExperience(parameters.fields['years-of-experience'].stringValue, sender);
+									colors.updatePhoneNumber(parameters.fields['phone-number'].stringValue, sender);
 									sendTextMessage(sender, "SAVE");
 			            break;
 
