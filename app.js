@@ -239,18 +239,18 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								let replies = [
 										{
 												"content_type":"text",
-												"title":"Less than 1 year",
-												"payload":"Less than 1 year"
+												"title":"More than 1 year",
+												"payload":"FIRST_YEAR"
 										},
 										{
 												"content_type":"text",
-												"title":"Less than 10 years",
-												"payload":"Less than 10 years"
+												"title":"More than 3 years",
+												"payload":"THIRD_YEAR"
 										},
 										{
 												"content_type":"text",
-												"title":"More than 10 years",
-												"payload":"More than 10 years"
+												"title":"More than 5 years",
+												"payload":"FIFTH_YEAR"
 										}
 								];
 								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
@@ -281,18 +281,13 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								let replies = [
 										{
 												"content_type":"text",
-												"title":"Less than 1 year",
-												"payload":"Less than 1 year"
+												"title":"YES I'am interesting",
+												"payload":"YES"
 										},
 										{
 												"content_type":"text",
-												"title":"Less than 10 years",
-												"payload":"Less than 10 years"
-										},
-										{
-												"content_type":"text",
-												"title":"More than 10 years",
-												"payload":"More than 10 years"
+												"title":"NO I'am not interesting",
+												"payload":"NO"
 										}
 								];
 								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
