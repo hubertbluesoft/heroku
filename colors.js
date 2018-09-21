@@ -4,7 +4,7 @@ const config = require('./config.sample');
 const pg = require('pg');
 pg.defaults.ssl = true;
 module.exports = {
-    readAllColors: function(callback) {
+    readAllJob: function(callback) {
         var pool = new pg.Pool(config.PG_CONFIG);
         pool.connect(function(err, client, done) {
             if (err) {
@@ -12,7 +12,7 @@ module.exports = {
             }
             client
                 .query(
-                    'SELECT color FROM public.iphone_colors',
+                    'SELECT color FROM public.all_job',
                     function(err, result) {
                         if (err) {
                             console.log(err);
@@ -20,7 +20,7 @@ module.exports = {
                         } else {
                             let colors = [];
                             for (let i = 0; i < result.rows.length; i++) {
-                                colors.push(result.rows[i]['color']);
+                                colors.push(result.rows[i]['job']);
                             }
                             callback(colors);
                         };
