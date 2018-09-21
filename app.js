@@ -14,6 +14,7 @@ const colors = require('./colors');
 const userService = require('./user');
 const usersMap = new Map();
 const fbService = require('./fb-service');
+let dialogflowService = require('./dialogflow-service');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -927,12 +928,14 @@ function receivedPostback(event) {
             break;
         case "JOB_YES":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, "Yes I am interesting in your offer", detailed-application);
-            break;
+            //sendToDialogFlow(senderID, "Yes I am interesting in your offer");
+
+						break;
 				case "JOB_NO":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, "Not interested");
-            break;
+            //sendToDialogFlow(senderID, "Not interested");
+						dialogflowService.sendEventToDialogFlow(sessionIds, handleDialogFlowResponse, senderID, 'JOB_OPENINGS')
+						break;
         default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
