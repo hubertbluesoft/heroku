@@ -272,28 +272,33 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				}
 				break;
 
-        case "buy.iphone":
-            colors.readUserColor(function(color) {
-                    let reply;
-                    if (color === '') {
-                        reply = "We're currently looking for new staff. Please click or type text which job do you prefer?";
-                    } else {
-                        reply = `We already have your job application as ${color}?`;
-                    }
-                    sendTextMessage(sender, reply);
-
-                }, sender
-            )
-            break;
-		case "job":
+    		case "job":
 
             colors.readAllJob(function (job) {
 								let allJobString = job.join(', ');
-								let reply = `We're currently looking for new staff (${allJobString}). Please click or type text which job do you prefer.`;
+								let reply = `We're currently looking for new staff (${allJobString}). Please click or type if you are intersting in our offer?`;
                 sendTextMessage(sender, reply);
+								let replies = [
+										{
+												"content_type":"text",
+												"title":"Less than 1 year",
+												"payload":"Less than 1 year"
+										},
+										{
+												"content_type":"text",
+												"title":"Less than 10 years",
+												"payload":"Less than 10 years"
+										},
+										{
+												"content_type":"text",
+												"title":"More than 10 years",
+												"payload":"More than 10 years"
+										}
+								];
+								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
             });
             break;
-		/*case "faq-delivery":
+				/*case "faq-delivery":
             handleMessages(messages, sender);
             sendTypingOn(sender);
             //ask what user wants to do next
@@ -316,7 +321,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
         case "input-welcome":
         	handleMessages(messages, sender);
-            sendTypingOn(sender);
+          sendTypingOn(sender);
+
             //You can use sender.name to print name
 			setTimeout(function() {
 
