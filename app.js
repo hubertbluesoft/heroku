@@ -276,29 +276,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
             colors.readAllJob(function (job) {
 								let allJobString = job.join(', ');
-								let reply = `We're currently looking for new staff (${allJobString}). Please click or type if you are intersting in our offer?`;
+								let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
                 sendTextMessage(sender, reply);
             });
-
-						let replies = [
-								{
-										"content_type":"text",
-										"title":"Less than 1 year",
-										"payload":"Less than 1 year"
-								},
-								{
-										"content_type":"text",
-										"title":"Less than 10 years",
-										"payload":"Less than 10 years"
-								},
-								{
-										"content_type":"text",
-										"title":"More than 10 years",
-										"payload":"More than 10 years"
-								}
-						];
-						fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-						fbService.handleMessages(messages, sender);
             break;
 				/*case "faq-delivery":
             handleMessages(messages, sender);
