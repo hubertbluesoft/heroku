@@ -221,8 +221,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				if (fbService.isDefined(contexts[0]) &&
 						(contexts[0].name.includes('job_application') || contexts[0].name.includes('job-application-details_dialog_context'))
 						&& contexts[0].parameters) {
-							let job_vacancy = (fbService.isDefined(contexts[0].parameters.fields['job-vacancy'])
-									&& contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
+						let job_vacancy = (fbService.isDefined(contexts[0].parameters.fields['job-vacancy'])
+								&& contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
 						let user_name = (fbService.isDefined(contexts[0].parameters.fields['user-name'])
 								&& contexts[0].parameters.fields['user-name'] != '') ? contexts[0].parameters.fields['user-name'].stringValue : '';
 						let user_lastname = (fbService.isDefined(contexts[0].parameters.fields['user-lastname'])
@@ -234,7 +234,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						let phone_number = (fbService.isDefined(contexts[0].parameters.fields['phone-number'])
 								&& contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
 
-						if ( user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience == '' && phone_number == '' ) {
+						if ( job_vacancy != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience == '' && phone_number == '' ) {
 
 								let replies = [
 										{
