@@ -283,12 +283,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										{
 												"content_type":"text",
 												"title":"YES I'am interesting",
-												"payload":"JOB_YES"
+												"text":"Yes I'am interesting"
 										},
 										{
 												"content_type":"text",
 												"title":"NO I'am not interesting",
-												"payload":"JOB_NO"
+												"text":"No I'am not interesting"
 										}
 								];
 								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
@@ -926,7 +926,7 @@ function receivedPostback(event) {
             //get feedback with new jobs
 						sendToDialogFlow(senderID, "I want to work in your company");
             break;
-        case "JOB_YES":
+        /*case "JOB_YES":
             //get feedback with new jobs
             //sendToDialogFlow(senderID, "Yes I am interesting in your offer");
 
@@ -934,8 +934,8 @@ function receivedPostback(event) {
 				case "JOB_NO":
             //get feedback with new jobs
             //sendToDialogFlow(senderID, "Not interested");
-						dialogflowService.sendEventToDialogFlow(sessionIds, handleDialogFlowResponse, senderID, 'bluesoft_job_application_not_interested')
-						break;
+						//dialogflowService.sendEventToDialogFlow(sessionIds, handleDialogFlowResponse, senderID,"")
+						break;*/
         default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
