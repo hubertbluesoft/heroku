@@ -298,7 +298,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								}
 						];
 						fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-
+						fbService.handleMessages(messages, sender);
             break;
 				/*case "faq-delivery":
             handleMessages(messages, sender);
