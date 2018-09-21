@@ -276,8 +276,26 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
             colors.readAllJob(function (job) {
 								let allJobString = job.join(', ');
-								let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
-                sendTextMessage(sender, reply);
+								//let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
+								//sendTextMessage(sender, reply);
+								let replies = [
+										{
+												"content_type":"text",
+												"title":"Less than 1 year",
+												"payload":"Less than 1 year"
+										},
+										{
+												"content_type":"text",
+												"title":"Less than 10 years",
+												"payload":"Less than 10 years"
+										},
+										{
+												"content_type":"text",
+												"title":"More than 10 years",
+												"payload":"More than 10 years"
+										}
+								];
+								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
             });
             break;
 				/*case "faq-delivery":
@@ -330,26 +348,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                 sendGenericMessage(sender, elements);
                 }, 3000)
             break;
-            /*case "detailed-application":
-                let replies = [
-                    {
-                        "content_type":"text",
-                        "title":"RPA developer",
-                        "payload":"RPA_DEVELOPER"
-                    },
-                    {
-                        "content_type":"text",
-                        "title":"Manager",
-                        "payload":"MANAGER"
-                    },
-                    {
-                        "content_type":"text",
-                        "title":"Not interested",
-                        "payload":"NOT_INTERESTED"
-                    }
-                ];
-                sendQuickReply(sender, messages[0].text.text[0], replies);
-            break;*/
+
 		default:
 			//unhandled action, just send back the text
             handleMessages(messages, sender);
