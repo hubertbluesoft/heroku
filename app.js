@@ -245,7 +245,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										{
 												"content_type":"text",
 												"title":"More than 3 years",
-												"payload":"More than 3 yearsR"
+												"payload":"More than 3 years"
 										},
 										{
 												"content_type":"text",
@@ -314,10 +314,10 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             }, 3000)
             break;*/
 
-        case "input-welcome":
+        	/*case "input-welcome":
         	handleMessages(messages, sender);
           sendTypingOn(sender);
-
+					*/
             //You can use sender.name to print name
 			setTimeout(function() {
 
