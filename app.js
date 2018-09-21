@@ -259,7 +259,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
 									colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
 									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-									colors.updateYearsOfExperience(parameters.fields['years_of_experience'].stringValue, sender);
+									colors.updateYearsOfExperience(parameters.fields['years-of-experience'].stringValue, sender);
 									sendTextMessage(sender, "SAVE");
 			            break;
 
