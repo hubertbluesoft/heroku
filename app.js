@@ -934,7 +934,7 @@ function receivedPostback(event) {
 				case "JOB_NO":
             //get feedback with new jobs
             //sendToDialogFlow(senderID, "Not interested");
-						dialogflowService.sendEventToDialogFlow(sessionIds, handleDialogFlowResponse, senderID, 'JOB_OPENINGS')
+						dialogflowService.sendEventToDialogFlow(sessionIds, handleDialogFlowResponse, senderID, 'bluesoft_job_application_not_interested')
 						break;
         default:
 			//unindentified payload
