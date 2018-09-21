@@ -282,12 +282,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										{
 												"content_type":"text",
 												"title":"YES I'am interesting",
-												"payload":"YES"
+												"payload":"JOB_YES"
 										},
 										{
 												"content_type":"text",
 												"title":"NO I'am not interesting",
-												"payload":"NO"
+												"payload":"JOB_NO"
 										}
 								];
 								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
@@ -925,11 +925,14 @@ function receivedPostback(event) {
             //get feedback with new jobs
 						sendToDialogFlow(senderID, "I want to work in your company");
             break;
-        case "NOT_INTERESTED":
+        case "JOB_YES":
+            //get feedback with new jobs
+            sendToDialogFlow(senderID, "Yes I am interesting in your offer");
+            break;
+				case "JOB_NO":
             //get feedback with new jobs
             sendToDialogFlow(senderID, "Not interested");
             break;
-
         default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
