@@ -314,10 +314,10 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             }, 3000)
             break;*/
 
-        	/*case "input-welcome":
-        	handleMessages(messages, sender);
+        	case "input-welcome":
+        	/*handleMessages(messages, sender);
           sendTypingOn(sender);
-					*/
+
             //You can use sender.name to print name
 			setTimeout(function() {
 
@@ -341,7 +341,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
                     }
                 ]
                 sendGenericMessage(sender, elements);
-                }, 3000)
+							}, 3000)*/
+						greetUserText(senderID);
+
             break;
 
 		default:
