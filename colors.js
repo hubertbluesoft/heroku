@@ -18,11 +18,11 @@ module.exports = {
                             console.log(err);
                             callback([]);
                         } else {
-                            let colors = [];
+                            let job = [];
                             for (let i = 0; i < result.rows.length; i++) {
-                                colors.push(result.rows[i]['job']);
+                                job.push(result.rows[i]['job']);
                             }
-                            callback(colors);
+                            callback(job);
                         };
                     });
         });
