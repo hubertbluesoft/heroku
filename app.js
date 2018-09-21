@@ -927,7 +927,7 @@ function receivedPostback(event) {
             break;
         case "JOB_YES":
             //get feedback with new jobs
-            sendToDialogFlow(senderID, "Yes I am interesting in your offer");
+            sendToDialogFlow(senderID, "Yes I am interesting in your offer", detailed-application);
             break;
 				case "JOB_NO":
             //get feedback with new jobs
