@@ -283,12 +283,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										{
 												"content_type":"text",
 												"title":"YES I'am interesting",
-												"text":"Yes I'am interesting"
+												"payload":"YES I'am interesting"
 										},
 										{
 												"content_type":"text",
 												"title":"NO I'am not interesting",
-												"text":"No I'am not interesting"
+												"payload":"NO I'am not interesting"
 										}
 								];
 								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
