@@ -238,7 +238,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 						//if ( job_vacancy != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience == '' && phone_number == '' ) {
 						if (previous_job != '' && years_of_experience == '') {
-
+						setTimeout(function() {
 								let replies = [
 										{
 												"content_type":"text",
@@ -257,15 +257,29 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										}
 								];
 								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+							}, 1000)
 						} else if (phone_number != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience != '') {
-									colors.updateJobVacancy(parameters.fields['job-vacancy'].stringValue, sender);
-									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
-									colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
-									colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-									colors.updateYearsOfExperience(parameters.fields['years-of-experience'].stringValue, sender);
-									colors.updatePhoneNumber(parameters.fields['phone-number'].stringValue, sender);
-									sendTextMessage(sender, "SAVE");
-			            break;
+								setTimeout(function() {
+										colors.updateJobVacancy(parameters.fields['job-vacancy'].stringValue, sender);
+								}, 500)
+								setTimeout(function() {
+										colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
+								}, 500)
+								setTimeout(function() {
+										colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
+								}, 500)
+								setTimeout(function() {
+										colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
+								}, 500)
+								setTimeout(function() {
+										colors.updateYearsOfExperience(parameters.fields['years-of-experience'].stringValue, sender);
+								}, 500)
+								setTimeout(function() {
+										colors.updatePhoneNumber(parameters.fields['phone-number'].stringValue, sender);
+								}, 500)
+								sendTextMessage(sender, "SAVE");
+
+									break;
 
 						} else {
 								fbService.handleMessages(messages, sender);
@@ -279,6 +293,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								let allJobString = job.join(', ');
 								//let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
 								//sendTextMessage(sender, reply);
+								setTimeout(function() {
 								let replies = [
 										{
 												"content_type":"text",
@@ -292,8 +307,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										}
 								];
 								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
-            });
-            break;
+            	});
+						}, 1000)
+        	break;
 				/*case "faq-delivery":
             handleMessages(messages, sender);
             sendTypingOn(sender);
