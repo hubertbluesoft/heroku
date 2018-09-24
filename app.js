@@ -261,22 +261,22 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						} else if (phone_number != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience != '') {
 								setTimeout(function() {
 										colors.updateJobVacancy(parameters.fields['job-vacancy'].stringValue, sender);
-								}, 500)
+								}, 1000)
 								setTimeout(function() {
 										colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
-								}, 500)
+								}, 1000)
 								setTimeout(function() {
 										colors.updateUserLastname(parameters.fields['user-lastname'].stringValue, sender);
-								}, 500)
+								}, 1000)
 								setTimeout(function() {
 										colors.updatePreviousJob(parameters.fields['previous-job'].stringValue, sender);
-								}, 500)
+								}, 1000)
 								setTimeout(function() {
 										colors.updateYearsOfExperience(parameters.fields['years-of-experience'].stringValue, sender);
-								}, 500)
+								}, 1000)
 								setTimeout(function() {
 										colors.updatePhoneNumber(parameters.fields['phone-number'].stringValue, sender);
-								}, 500)
+								}, 1000)
 								sendTextMessage(sender, "SAVE");
 
 									break;
