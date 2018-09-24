@@ -306,10 +306,11 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 												"payload":"NO I'am not interesting"
 										}
 								];
-								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
+								fbService.sendQuickReply(sender, "We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?", replies);
             	});
 						}, 1000)
         	break;
+
 				/*case "faq-delivery":
             handleMessages(messages, sender);
             sendTypingOn(sender);
@@ -332,36 +333,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
             break;*/
 
         	case "input-welcome":
-        	/*handleMessages(messages, sender);
-          sendTypingOn(sender);
-
-            //You can use sender.name to print name
-			setTimeout(function() {
-
-                sendTextMessage(sender, "Welcome to Bluesoft HR service how can we help you?");
-
-                let elements = [
-                    {
-                        "title":"Bluesoft HR service",
-                        "image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
-                        "buttons":[
-                            {
-                                "type":"web_url",
-                                "url":"https://bluesoft.net.pl/en/",
-                                "title":"About us"
-                            },{
-                                "type":"postback",
-                                "title":"Find job",
-                                "payload":"FIND_JOB"
-                            }
-                        ]
-                    }
-                ]
-                sendGenericMessage(sender, elements);
-							}, 3000)*/
 						greetUserText(sender);
-
-            break;
+          break;
 
 		default:
 			//unhandled action, just send back the text
