@@ -219,8 +219,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 	switch (action) {
 
 				case "detailed-application":
+				//job-application-details_dialog_context
 				if (fbService.isDefined(contexts[0]) &&
-						(contexts[0].name.includes('job_application') || contexts[0].name.includes('job-application-details_dialog_context'))
+						(contexts[0].name.includes('job_application') || contexts[0].name.includes('bluesoft_job_application_dialog_context'))
 						&& contexts[0].parameters) {
 						let job_vacancy = (fbService.isDefined(contexts[0].parameters.fields['job-vacancy'])
 								&& contexts[0].parameters.fields['job-vacancy'] != '') ? contexts[0].parameters.fields['job-vacancy'].stringValue : '';
@@ -235,7 +236,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						let phone_number = (fbService.isDefined(contexts[0].parameters.fields['phone-number'])
 								&& contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
 
-						if ( job_vacancy != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience == '' && phone_number == '' ) {
+						//if ( job_vacancy != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience == '' && phone_number == '' ) {
+						if (previous_job != '') {
 
 								let replies = [
 										{
@@ -265,7 +267,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 									sendTextMessage(sender, "SAVE");
 			            break;
 
-								fbService.handleMessages(messages, sender);
+								  fbService.handleMessages(messages, sender);
 
 						} else {
 								fbService.handleMessages(messages, sender);
