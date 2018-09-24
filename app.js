@@ -865,7 +865,7 @@ async function greetUserText(userId) {
                 },{
                     "type":"postback",
                     "title":"Find job",
-                    "payload":"FIND_JOB"
+                    "payload":"Find job"
                 }
             ]
         }
