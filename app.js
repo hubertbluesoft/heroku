@@ -237,7 +237,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								&& contexts[0].parameters.fields['phone-number'] != '') ? contexts[0].parameters.fields['phone-number'].stringValue : '';
 
 						//if ( job_vacancy != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience == '' && phone_number == '' ) {
-						if (previous_job != '') {
+						if (previous_job != '' && phone_number == '') {
 
 								let replies = [
 										{
@@ -257,6 +257,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										}
 								];
 								fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+								fbService.handleMessages(messages, sender);
 						} else if (phone_number != '' && user_name != '' && user_lastname != '' && previous_job != '' && years_of_experience != '') {
 									colors.updateJobVacancy(parameters.fields['job-vacancy'].stringValue, sender);
 									colors.updateUserName(parameters.fields['user-name'].stringValue, sender);
@@ -266,8 +267,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 									colors.updatePhoneNumber(parameters.fields['phone-number'].stringValue, sender);
 									sendTextMessage(sender, "SAVE");
 			            break;
-
-								  fbService.handleMessages(messages, sender);
 
 						} else {
 								fbService.handleMessages(messages, sender);
