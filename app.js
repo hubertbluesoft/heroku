@@ -319,6 +319,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				case "facebook.text.response":
 				{
 					fbService.sendTextMessage(sender,"text backend")
+					fbService.sendImageMessage(sender,`https://infinitygc.com.au/wp-content/uploads/2018/03/is-the-yes-button-yellow-octopus-30799627914_2000x2000.jpg`)
 				}
 				break;
 
