@@ -311,27 +311,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						}, 1000)
         	break;
 
-				/*case "faq-delivery":
-            handleMessages(messages, sender);
-            sendTypingOn(sender);
-            //ask what user wants to do next
-            setTimeout(function() {
-                let buttons = [
-                    {
-                        type:"web_url",
-                        url:"https://www.google.com",
-                        title:"Track my order"
-                    },
-                    {
-                        type:"postback",
-                        title:"Keep on Chatting",
-                        payload:"CHAT"
-                    }
-                ];
-                sendButtonMessage(sender, "What would you like to do next?", buttons);
-            }, 3000)
-            break;*/
-
         	case "input-welcome":
 						greetUserText(sender);
           break;
@@ -915,21 +894,10 @@ function receivedPostback(event) {
             //get feedback with new jobs
 						sendToDialogFlow(senderID, "I want to work in your company");
             break;
-        /*case "JOB_YES":
-            //get feedback with new jobs
-            //sendToDialogFlow(senderID, "Yes I am interesting in your offer");
-
-						break;
-				case "JOB_NO":
-            //get feedback with new jobs
-            //sendToDialogFlow(senderID, "Not interested");
-						//dialogflowService.sendEventToDialogFlow(sessionIds, handleDialogFlowResponse, senderID,"")
-						break;*/
         default:
-			//unindentified payload
-			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
-			break;
-
+						//unindentified payload
+						sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
+						break;
 	}
 
 	console.log("Received postback for user %d and page %d with payload '%s' " +
