@@ -218,6 +218,35 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 	switch (action) {
 
+				case "input-welcome":
+					greetUserText(sender);
+				break;
+
+				case "job":
+
+            		//colors.readAllJob(function (job) {
+								//let allJobString = job.join(', ');
+								//let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
+								//sendTextMessage(sender, reply);
+								setTimeout(function() {
+								let replies = [
+										{
+												"content_type":"text",
+												"title":"YES I'am interesting",
+												"payload":"YES I'am interesting"
+										},
+										{
+												"content_type":"text",
+												"title":"NO I'am not interesting",
+												"payload":"NO I'am not interesting"
+										}
+								];
+								fbService.sendQuickReply(sender, "We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?", replies);
+            	//});
+						}, 1000)
+    		break;
+
+
 				case "detailed-application":
 				//job-application-details_dialog_context
 				if (fbService.isDefined(contexts[0]) &&
@@ -287,33 +316,11 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				}
 				break;
 
-    		case "job":
-
-            		//colors.readAllJob(function (job) {
-								//let allJobString = job.join(', ');
-								//let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
-								//sendTextMessage(sender, reply);
-								setTimeout(function() {
-								let replies = [
-										{
-												"content_type":"text",
-												"title":"YES I'am interesting",
-												"payload":"YES I'am interesting"
-										},
-										{
-												"content_type":"text",
-												"title":"NO I'am not interesting",
-												"payload":"NO I'am not interesting"
-										}
-								];
-								fbService.sendQuickReply(sender, "We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?", replies);
-            	//});
-						}, 1000)
-        	break;
-
-        	case "input-welcome":
-						greetUserText(sender);
-          break;
+				case "facebook.text.response":
+				{
+				fbService.sendTextMessage(sender,"text backend")
+				}
+				break;
 
 		default:
 			//unhandled action, just send back the text
