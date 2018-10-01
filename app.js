@@ -369,8 +369,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				let replies = [
 						{
 								"content_type":"text",
-								"title":"text backend",
-								"payload":"test text"
+								"title":"backend tekst",
+								"payload":"test tekst"
 						},
 						{
 								"content_type":"text",
@@ -383,7 +383,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								"payload":"image"
 						}
 				];
-				fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+				fbService.sendQuickReply(sender, "Please choose one response", replies);
 				}
 				break;
 
