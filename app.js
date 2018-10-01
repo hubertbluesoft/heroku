@@ -373,9 +373,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 											"payload":"card"
 									},
 									{
-											"content_type":"lacation",
-											//"title":"image",
-											//"payload":"image"
+											"content_type":"location",
+											"title":"Facebook HQ",
+											"payload":"coordinates"
 									},
 									{
 											"content_type":"text",
