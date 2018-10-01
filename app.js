@@ -367,19 +367,19 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				case "facebook.quick.replies.response":
 							let replies = [
 									{
-											"content_type":"payload",
-											"title":"payload 1",
-											"payload":"payload_1"
+											"content_type":"text",
+											"title":"text",
+											"payload":"card"
 									},
 									{
 											"content_type":"text",
-											"title":"payload 2",
-											"payload":"payload_2"
+											"title":"image",
+											"payload":"image"
 									},
 									{
 											"content_type":"text",
-											"title":"payload 3",
-											"payload":"payload_3"
+											"title":"card",
+											"payload":"text"
 									}
 							];
 							fbService.sendQuickReply(sender, "Please select button", replies);
@@ -968,7 +968,7 @@ function receivedPostback(event) {
             //get feedback with new jobs
 						sendTextMessage(senderID, "OK");
             break;
-				case "payload":
+				case "image":
 				let replies = [
 						{
 								"content_type":"text",
@@ -977,7 +977,7 @@ function receivedPostback(event) {
 								"payload":"payload_1"
 						}
 				];
-				fbService.sendQuickReply(sender, "Please select button", replies);
+				fbService.sendQuickReply(senderID, "Please select button", replies);
 				break;
 
         default:
