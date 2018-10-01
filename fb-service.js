@@ -41,7 +41,7 @@ module.exports = {
         let self = module.exports;
         //for now just reply messageAttachments[0].payload.url
 
-        self.sendTextMessage(senderID, `Attachment received. Thank you.${messageAttachments[0].stringValue}`);
+        self.sendTextMessage(senderID, "Attachment received. Thank you.");
     },
 
     //https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-echo
