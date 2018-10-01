@@ -360,7 +360,15 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 					},
 					{
 						"title":"title text backend",
-						"subtitle":"subtitle text"
+						"subtitle":"subtitle text",
+						"image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg"
+						"buttons": [
+          	{
+            	"title": "View More",
+            	"type": "postback",
+            	"payload": "payload"
+          	}
+        	]; 
 					}
 				];
 					fbService.sendGenericMessage(sender, elements);
