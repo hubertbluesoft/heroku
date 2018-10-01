@@ -368,21 +368,21 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 							let replies = [
 									{
 											"content_type":"text",
-											"title":"More than 1 year",
-											"payload":"More than 1 year"
+											"title":"text",
+											"payload":"card"
 									},
 									{
 											"content_type":"text",
-											"title":"More than 3 years",
-											"payload":"More than 3 years"
+											"title":"image",
+											"payload":"image"
 									},
 									{
 											"content_type":"text",
-											"title":"More than 5 years",
-											"payload":"More than 5 years"
+											"title":"card",
+											"payload":"text"
 									}
 							];
-							fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+							fbService.sendQuickReply(sender, "Please select button", replies);
 				break;
 
 		default:
