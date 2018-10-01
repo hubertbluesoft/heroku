@@ -311,7 +311,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								setTimeout(function() {
 										colors.updatePhoneNumber(parameters.fields['phone-number'].stringValue, sender);
 								}, 1000)
-								sendTextMessage(sender, "SAVE");
+								sendTextMessage(sender, `Your application for the ${parameters.fields['job-vacancy'].stringValue} will processed as soon as possible. Our Bluesoft team will contact you shortly`);
 
 									break;
 
