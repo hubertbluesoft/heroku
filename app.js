@@ -357,13 +357,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 		                    "payload":"button_text"
 		                }
 		            ]
+					},
+					{
+						"title":"title text backend",
+						"subtitle":"subtitle text"
 					}
-					]
-				},
-				{
-					"title":"title text backend",
-					"subtitle":"subtitle text"
-				}
+				];
 					fbService.sendGenericMessage(sender, elements);
 				}
 				break;
