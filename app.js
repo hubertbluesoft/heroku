@@ -370,7 +370,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 											"content_type":"text",
 											"title":"card",
 											"payload":"text"
-									}
+									},
 									{
 											"content_type":"text",
 											"title":"text",
@@ -381,8 +381,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 											"content_type":"location",
 											//"title":"Facebook HQ",
 											//"payload":"coordinates"
-									},
-
+									}
 							];
 							fbService.sendQuickReply(sender, "Please select button", replies);
 				break;
