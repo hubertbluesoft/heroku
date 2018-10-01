@@ -370,7 +370,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						{
 								"content_type":"text",
 								"title":"text backend",
-								"payload":"text"
+								"payload":"test text"
 						},
 						{
 								"content_type":"text",
