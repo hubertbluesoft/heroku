@@ -329,7 +329,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				break;
 				case "facebook.text.card":
 				{
-					let elements[
+					let elements = [
 					{
 		            "title":"title text",
 								"subtitle":"subtitle text",
