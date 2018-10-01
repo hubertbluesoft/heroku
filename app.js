@@ -365,7 +365,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 				//----------facebook_quick_replies intent----------
 				case "facebook.quick.replies.response":
-				
+				{
 					setTimeout(function() {
 							let replies = [
 									{
@@ -386,7 +386,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 							];
 							fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
 						}, 1000)
-
+				}
 				break;
 
 		default:
