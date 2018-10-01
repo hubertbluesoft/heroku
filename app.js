@@ -373,9 +373,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 											"payload":"card"
 									},
 									{
-											"content_type":"text",
-											"title":"image",
-											"payload":"image"
+											"content_type":"lacation",
+											//"title":"image",
+											//"payload":"image"
 									},
 									{
 											"content_type":"text",
