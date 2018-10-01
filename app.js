@@ -365,9 +365,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 				//----------facebook_quick_replies intent----------
 				case "facebook.quick.replies.response":
-				{
-					setTimeout(function() {
-							let repliess = [
+							let replies = [
 									{
 											"content_type":"text",
 											"title":"More than 1 year",
@@ -384,9 +382,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 											"payload":"More than 5 years"
 									}
 							];
-							fbService.sendQuickReply(sender, messages[0].text.text[0], repliess);
-						}, 1000)
-				}
+							fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
 				break;
 
 		default:
