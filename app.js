@@ -327,7 +327,29 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 					fbService.sendImageMessage(sender,`https://infinitygc.com.au/wp-content/uploads/2018/03/is-the-yes-button-yellow-octopus-30799627914_2000x2000.jpg`);
 				}
 				break;
-
+				case "facebook.text.card":
+				{
+					let elements[
+					{
+		            "title":"title text",
+								"subtitle":"subtitle text",
+								"image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
+		            "buttons":[
+		                {
+		                    "type":"web_url",
+		                    "url":"https://bluesoft.net.pl/en/",
+		                    "title":"button link text"
+		                },{
+		                    "type":"postback",
+		                    "title":"button payload",
+		                    "payload":"button_text"
+		                }
+		            ]
+					}
+					]
+					fbService.sendGenericMessage(sender, elements)
+				}
+				break;
 		default:
 			//unhandled action, just send back the text
             handleMessages(messages, sender);
@@ -906,6 +928,10 @@ function receivedPostback(event) {
         case "FIND_JOB":
             //get feedback with new jobs
 						sendToDialogFlow(senderID, "I want to work in your company");
+            break;
+				case "button_text":
+            //get feedback with new jobs
+						sendTextMessage(senderID, "OK");
             break;
         default:
 						//unindentified payload
