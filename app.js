@@ -359,6 +359,11 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 		            ]
 					}
 					]
+				},
+				{
+					"title":"title text backend",
+					"subtitle":"subtitle text"
+				}
 					fbService.sendGenericMessage(sender, elements);
 				}
 				break;
