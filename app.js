@@ -359,7 +359,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 		            ]
 					}
 					]
-					fbService.sendGenericMessage(sender, elements)
+					fbService.sendGenericMessage(sender, elements);
 				}
 				break;
 
@@ -369,21 +369,21 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				let replies = [
 						{
 								"content_type":"text",
-								"title":"backend tekst",
-								"payload":"test tekst"
+								"title":"text backend",
+								"payload":"image"
 						},
 						{
 								"content_type":"text",
 								"title":"card backend",
-								"payload":"card"
+								"payload":"image"
 						},
 						{
 								"content_type":"text",
-								"title":"image backend",
-								"payload":"image"
+								"title":"card backend",
+								"payload":"text"
 						}
 				];
-				fbService.sendQuickReply(sender, "Please choose one response", replies);
+				fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
 				}
 				break;
 
