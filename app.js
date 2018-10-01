@@ -218,9 +218,13 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
 	switch (action) {
 
+				//----------bluesoft_welcome intent----------
+
 				case "input-welcome":
 					greetUserText(sender);
 				break;
+
+				//----------bluesoft_job intent----------
 
 				case "job":
 
@@ -246,6 +250,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						}, 1000)
     		break;
 
+				//----------bluesoft_job_application intent----------
 
 				case "detailed-application":
 				//job-application-details_dialog_context
@@ -316,22 +321,29 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				}
 				break;
 
+				//----------facebook_text_response intent----------
+
 				case "facebook.text.response":
 				{
 					fbService.sendTextMessage(sender,"text backend");
 				}
 				break;
 
+				//----------facebook_image_response intent----------
+
 				case "facebook.image.response":
 				{
 					fbService.sendImageMessage(sender,`https://infinitygc.com.au/wp-content/uploads/2018/03/is-the-yes-button-yellow-octopus-30799627914_2000x2000.jpg`);
 				}
 				break;
+
+				//----------facebook_card_response intent----------
+
 				case "facebook.card.response":
 				{
 					let elements = [
 					{
-		            "title":"title text",
+		            "title":"title text backend",
 								"subtitle":"subtitle text",
 								"image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
 		            "buttons":[
@@ -341,7 +353,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 		                    "title":"button link text"
 		                },{
 		                    "type":"postback",
-		                    "title":"button payload",
+		                    "title":"button text",
 		                    "payload":"button_text"
 		                }
 		            ]
@@ -350,6 +362,28 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 					fbService.sendGenericMessage(sender, elements)
 				}
 				break;
+
+				//----------facebook_quick_replies intent----------
+
+				let replies = [
+						{
+								"content_type":"text",
+								"title":"text backend",
+								"payload":"text"
+						},
+						{
+								"content_type":"text",
+								"title":"card backend",
+								"payload":"card"
+						},
+						{
+								"content_type":"text",
+								"title":"image backend",
+								"payload":"image"
+						}
+				];
+				fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+
 		default:
 			//unhandled action, just send back the text
             handleMessages(messages, sender);
