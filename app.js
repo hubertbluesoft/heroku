@@ -343,7 +343,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				{
 					let elements = [
 					{
-								"title":"title text"
+								"title":"title text",
 								"subtitle":"subtitle text",
 								"image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
 		            "buttons":[
