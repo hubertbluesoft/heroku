@@ -369,7 +369,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 									{
 											"content_type":"text",
 											"title":"payload 1",
-											"payload":"payload_1"
+											"payload":"payload"
 									},
 									{
 											"content_type":"text",
@@ -968,23 +968,13 @@ function receivedPostback(event) {
             //get feedback with new jobs
 						sendTextMessage(senderID, "OK");
             break;
-				case "payload_1":
+				case "payload":
 				let replies = [
 						{
 								"content_type":"text",
 								"title":"payload 1",
 								"image_url":"https://banner2.kisspng.com/20180320/ryq/kisspng-computer-icons-red-polka-dot-clip-art-red-button-icon-png-5ab123341481a4.656246001521558324084.jpg",
 								"payload":"payload_1"
-						},
-						{
-								"content_type":"text",
-								"title":"payload 2",
-								"payload":"payload_2"
-						},
-						{
-								"content_type":"text",
-								"title":"payload 3",
-								"payload":"payload_3"
 						}
 				];
 				fbService.sendQuickReply(sender, "Please select button", replies);
