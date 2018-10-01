@@ -343,9 +343,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				{
 					let elements = [
 					{
-								"template_type":"list",
-								"top_element_style":"compact",
-		            "title":"title text backend",
 								"subtitle":"subtitle text",
 								"image_url":"http://www.grupablue.pl/images/Klienci/Blue%20Soft.png.jpg",
 		            "buttons":[
@@ -359,7 +356,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 		                    "payload":"button_text"
 		                }
 		            ]
-							}
+				}
 				];
 					fbService.sendGenericMessage(sender, elements);
 				}
