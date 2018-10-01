@@ -327,7 +327,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 					fbService.sendImageMessage(sender,`https://infinitygc.com.au/wp-content/uploads/2018/03/is-the-yes-button-yellow-octopus-30799627914_2000x2000.jpg`);
 				}
 				break;
-				case "facebook.text.card":
+				case "facebook.card.response":
 				{
 					let elements = [
 					{
