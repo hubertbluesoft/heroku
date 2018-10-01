@@ -367,9 +367,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				case "facebook.quick.replies.response":
 							let replies = [
 									{
-											"content_type":"text",
+											"content_type":"payload",
 											"title":"payload 1",
-											"payload":"payload"
+											"payload":"payload_1"
 									},
 									{
 											"content_type":"text",
