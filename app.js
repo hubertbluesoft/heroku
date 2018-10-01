@@ -368,20 +368,21 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 							let replies = [
 									{
 											"content_type":"text",
+											"title":"card",
+											"payload":"text"
+									}
+									{
+											"content_type":"text",
 											"title":"text",
 											"image_url":"https://banner2.kisspng.com/20180402/fwe/kisspng-facebook-messenger-like-button-emoji-face-5ac2d68fa96230.5754447115227183516938.jpg",
 											"payload":"card"
 									},
 									{
 											"content_type":"location",
-											"title":"Facebook HQ",
-											"payload":"coordinates"
+											//"title":"Facebook HQ",
+											//"payload":"coordinates"
 									},
-									{
-											"content_type":"text",
-											"title":"card",
-											"payload":"text"
-									}
+
 							];
 							fbService.sendQuickReply(sender, "Please select button", replies);
 				break;
