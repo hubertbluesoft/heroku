@@ -383,7 +383,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								"payload":"text"
 						}
 				];
-				fbService.sendQuickReply(sender, message[0].text.text[0], replies);
+				fbService.sendQuickReply(sender, "", replies);
 				}
 				break;
 
