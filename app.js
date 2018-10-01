@@ -364,7 +364,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				break;
 
 				//----------facebook_quick_replies intent----------
-
+				case "facebook.quick.replies.response":
+				{
 				let replies = [
 						{
 								"content_type":"text",
@@ -383,6 +384,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						}
 				];
 				fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+				}
+				break;
 
 		default:
 			//unhandled action, just send back the text
