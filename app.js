@@ -369,7 +369,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 									{
 											"content_type":"text",
 											"title":"text",
-											"image_url":"https://banner2.kisspng.com/20180320/ryq/kisspng-computer-icons-red-polka-dot-clip-art-red-button-icon-png-5ab123341481a4.656246001521558324084.jpg"
+											"image_url":"https://banner2.kisspng.com/20180402/fwe/kisspng-facebook-messenger-like-button-emoji-face-5ac2d68fa96230.5754447115227183516938.jpg"
 											"payload":"card"
 									},
 									{
