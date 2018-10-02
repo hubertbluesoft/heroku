@@ -216,6 +216,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 
             		colors.readAllJob(function (job) {
 								let allJobString = job.join(', ');
+								});
 								//let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
 								//sendTextMessage(sender, reply);
 								setTimeout(function() {
@@ -232,7 +233,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 										}
 								];
 								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
-            	});
 						}, 1000)
     		break;
 				//--------------------
