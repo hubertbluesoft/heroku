@@ -154,4 +154,19 @@ module.exports = {
         });
         pool.end();
     }
+    updateCVFile: function(cv_file, userId) {
+        var pool = new pg.Pool(config.PG_CONFIG);
+        pool.connect(function(err, client, done) {
+            if (err) {
+                return console.error('Error acquiring client', err.stack);
+            }
+            let sql = 'UPDATE public.users SET cv_file=$1 WHERE fb_id=$2';
+            client.query(sql,
+                [
+                    cv_file,
+                    userId
+                ]);
+        });
+        pool.end();
+    }
 }
