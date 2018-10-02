@@ -185,7 +185,7 @@ function receivedMessage(event) {
 function handleMessageAttachments(messageAttachments, senderID){
 	//for now just reply
 	sendTextMessage(senderID, `Attachment received. Thank you. OK ${messageAttachments[0].payload.url}`);
-	colors.updateCVFile(messageAttachments[0].payload.url.stringValue, senderID);
+	colors.updateCVFile(messageAttachments[0].payload.url, senderID);
 }
 
 function handleQuickReply(senderID, quickReply, messageId) {
