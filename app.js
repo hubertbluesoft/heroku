@@ -184,7 +184,7 @@ function receivedMessage(event) {
 
 function handleMessageAttachments(messageAttachments, senderID){
 	//for now just reply
-	sendTextMessage(senderID, `Attachment received. Thank you. OK ${messageAttachments[0].payload.url}`);
+	sendTextMessage(senderID, `Attachment received. Thank you. If you want anything else you can type or select what do you need from Bluesoft menu`);
 	colors.updateCVFile(messageAttachments[0].payload.url, senderID);
 }
 
@@ -214,8 +214,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 				//----------bluesoft_job intent----------
 				case "job":
 
-            		//colors.readAllJob(function (job) {
-								//let allJobString = job.join(', ');
+            		colors.readAllJob(function (job) {
+								let allJobString = job.join(', ');
 								//let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
 								//sendTextMessage(sender, reply);
 								setTimeout(function() {
@@ -231,8 +231,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 												"payload":"NO I'am not interesting"
 										}
 								];
-								fbService.sendQuickReply(sender, "We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?", replies);
-            	//});
+								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
+            	});
 						}, 1000)
     		break;
 				//--------------------
@@ -297,7 +297,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 								setTimeout(function() {
 										colors.updatePhoneNumber(parameters.fields['phone-number'].stringValue, sender);
 								}, 1000)
-								sendTextMessage(sender, `Your application for the ${parameters.fields['job-vacancy'].stringValue} will processed as soon as possible. Our Bluesoft team will contact you shortly`);
+								sendTextMessage(sender, `Your application for the ${parameters.fields['job-vacancy'].stringValue} will processed as soon as you will send us CV attachment. Please send CV and than Bluesoft team will contact you shortly`);
 
 									break;
 
