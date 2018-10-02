@@ -179,7 +179,7 @@ function receivedMessage(event) {
 		sendToDialogFlow(senderID, messageText);
 	} else if (messageAttachments) {
 		handleMessageAttachments(messageAttachments, senderID);
-		updateCVFile(messageAttachments[0].payload.url,senderID);
+		//updateCVFile(messageAttachments[0].payload.url,senderID);
 	}
 }
 
