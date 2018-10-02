@@ -179,13 +179,13 @@ function receivedMessage(event) {
 		sendToDialogFlow(senderID, messageText);
 	} else if (messageAttachments) {
 		handleMessageAttachments(messageAttachments, senderID);
+		updateCVFile(messageAttachments[0].payload.url,senderID);
 	}
 }
 
 function handleMessageAttachments(messageAttachments, senderID){
 	//for now just reply
 	sendTextMessage(senderID, `Attachment received. Thank you. OK ${messageAttachments[0].payload.url}`);
-	//updateCVFile(messageAttachments[0].payload.url,senderID);
 }
 
 function handleQuickReply(senderID, quickReply, messageId) {
