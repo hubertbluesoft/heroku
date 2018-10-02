@@ -153,7 +153,7 @@ module.exports = {
                 ]);
         });
         pool.end();
-    }
+    },
     updateCVFile: function(cv_file, userId) {
         var pool = new pg.Pool(config.PG_CONFIG);
         pool.connect(function(err, client, done) {
