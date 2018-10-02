@@ -64,11 +64,6 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json());
 
-
-
-
-
-
 const credentials = {
     client_email: config.GOOGLE_CLIENT_EMAIL,
     private_key: config.GOOGLE_PRIVATE_KEY,
@@ -80,7 +75,6 @@ const sessionClient = new dialogflow.SessionsClient(
 		credentials
 	}
 );
-
 
 const sessionIds = new Map();
 
@@ -117,8 +111,6 @@ app.post('/webhook/', function (req, res) {
 	var data = req.body;
 	console.log(JSON.stringify(data));
 
-
-
 	// Make sure this is a page subscription
 	if (data.object == 'page') {
 		// Iterate over each entry
@@ -153,10 +145,6 @@ app.post('/webhook/', function (req, res) {
 	}
 });
 
-
-
-
-
 function receivedMessage(event) {
 
 	var senderID = event.sender.id;
@@ -186,7 +174,6 @@ function receivedMessage(event) {
 		return;
 	}
 
-
 	if (messageText) {
 		//send message to api.ai
 		sendToDialogFlow(senderID, messageText);
@@ -194,7 +181,6 @@ function receivedMessage(event) {
 		handleMessageAttachments(messageAttachments, senderID);
 	}
 }
-
 
 function handleMessageAttachments(messageAttachments, senderID){
 	//for now just reply
@@ -219,17 +205,16 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 	switch (action) {
 
 				//----------bluesoft_welcome intent----------
-
 				case "input-welcome":
 					greetUserText(sender);
 				break;
+				//--------------------
 
 				//----------bluesoft_job intent----------
-
 				case "job":
 
-            		//colors.readAllJob(function (job) {
-								//let allJobString = job.join(', ');
+            		colors.readAllJob(function (job) {
+								let allJobString = job.join(', ');
 								//let reply = `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`;
 								//sendTextMessage(sender, reply);
 								setTimeout(function() {
@@ -245,13 +230,13 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 												"payload":"NO I'am not interesting"
 										}
 								];
-								fbService.sendQuickReply(sender, "We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?", replies);
-            	//});
+								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
+            	});
 						}, 1000)
     		break;
+				//--------------------
 
 				//----------bluesoft_job_application intent----------
-
 				case "detailed-application":
 				//job-application-details_dialog_context
 				if (fbService.isDefined(contexts[0]) &&
@@ -320,25 +305,25 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 						}
 				}
 				break;
+				//--------------------
 
 				//----------facebook_text_response intent----------
-
 				case "facebook.text.response":
 				{
 					fbService.sendTextMessage(sender,"text backend");
 				}
 				break;
+				//--------------------
 
 				//----------facebook_image_response intent----------
-
 				case "facebook.image.response":
 				{
 					fbService.sendImageMessage(sender,`https://infinitygc.com.au/wp-content/uploads/2018/03/is-the-yes-button-yellow-octopus-30799627914_2000x2000.jpg`);
 				}
 				break;
+				//--------------------
 
 				//----------facebook_card_response intent----------
-
 				case "facebook.card.response":
 				{
 					let elements = [
@@ -362,6 +347,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 					fbService.sendGenericMessage(sender, elements);
 				}
 				break;
+				//--------------------
 
 				//----------facebook_quick_replies intent----------
 				case "facebook.quick.replies.response":
@@ -385,6 +371,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 							];
 							fbService.sendQuickReply(sender, "Please select button", replies);
 				break;
+				//--------------------
 
 		default:
 			//unhandled action, just send back the text
@@ -420,7 +407,6 @@ function handleMessage(message, sender) {
     }
 }
 
-
 function handleCardMessages(messages, sender) {
 
 	let elements = [];
@@ -446,7 +432,6 @@ function handleCardMessages(messages, sender) {
             buttons.push(button);
         }
 
-
 		let element = {
             "title": message.card.title,
             "image_url":message.card.imageUri,
@@ -457,7 +442,6 @@ function handleCardMessages(messages, sender) {
 	}
 	sendGenericMessage(sender, elements);
 }
-
 
 function handleMessages(messages, sender) {
     let timeoutInterval = 1100;
@@ -546,9 +530,6 @@ async function sendToDialogFlow(sender, textString, params) {
     }
 
 }
-
-
-
 
 function sendTextMessage(recipientId, text) {
 	var messageData = {
@@ -680,8 +661,6 @@ function sendFileMessage(recipientId, fileName) {
 	callSendAPI(messageData);
 }
 
-
-
 /*
  * Send a button message using the Send API.
  *
@@ -731,7 +710,6 @@ function sendGenericMessage(recipientId, elements) {
 
 	callSendAPI(messageData);
 }
-
 
 function sendReceiptMessage(recipientId, recipient_name, currency, payment_method,
 							timestamp, elements, address, summary, adjustments) {
@@ -928,8 +906,6 @@ function callSendAPI(messageData) {
 	});
 }
 
-
-
 /*
  * Postback Event
  *
@@ -980,7 +956,6 @@ function receivedPostback(event) {
 		"at %d", senderID, recipientID, payload, timeOfPostback);
 
 }
-
 
 /*
  * Message Read Event
