@@ -231,9 +231,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters) 
 												"payload":"NO I'am not interesting"
 										}
 								];
-								fbService.sendQuickReply(sender, "We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?", replies);
+								fbService.sendQuickReply(sender, `We're currently looking for new staff (${allJobString}). Are you still intersting in our offer?`, replies);
             	});
-						}, 1000)
+						}, 2000)
     		break;
 				//--------------------
 
